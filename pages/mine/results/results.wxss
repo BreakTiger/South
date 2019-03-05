@@ -1,1 +1,23 @@
-/* pages/mine/results/results.wxss */
+.box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200rpx;
+}
+
+.icon{
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 60rpx;
+}
+
+.topic{
+  font-size: 40rpx;
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 80rpx;
+}
+
+.link text{
+  font-size: 28rpx;
+}

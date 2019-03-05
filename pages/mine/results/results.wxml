@@ -1,2 +1,10 @@
-<!--pages/mine/results/results.wxml-->
-<text>pages/mine/results/results.wxml</text>
+<view class='box'>
+
+  <image src='/image/icon/success.png' class='icon'></image>
+  <view class='topic'>保存成功</view>
+  <view class='link'>
+    <text>返回</text>
+    <text style='color:#F08D01;margin-left:10rpx;' bindtap='backmine'>我的</text>
+  </view>
+
+</view>
