@@ -1,1 +1,48 @@
-/* pages/group/institutions/institutions.wxss */
+.pages{
+  width: 750rpx;
+  height: 100%;
+}
+
+.list-item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.header {
+  width: 185rpx;
+  height: 185rpx;
+  margin-right: 15rpx;
+  
+}
+
+.header image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 描述 */
+
+.info {
+  width: 545rpx;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid #e9e9e9;
+  
+}
+
+.classname {
+  color: #333333;
+  font-size: 38rpx; 
+  font-weight: bold;
+  line-height: 75rpx;
+}
+
+.classinfo {
+  font-size: 32rpx;
+  color: #444;
+  line-height: 53rpx;
+}

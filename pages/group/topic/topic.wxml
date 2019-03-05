@@ -1,0 +1,35 @@
+<!-- 群话题 -->
+
+
+<block wx:for="[0,1]">
+
+  <view class='list-item'>
+
+    <!-- 话题图片 -->
+    <view class='p1'>
+      <image src='/image/icon/img1.png'></image>
+    </view>
+
+    <!-- 话题信息 -->
+    <view class='topicinfo'>
+      <!-- 话题标题 -->
+      <view class='title'>校园内外新鲜事，易月精彩尽可知！</view>
+
+      <view class='line'>
+        <!-- 阅读人数 -->
+        <view class='read'>
+          <image src='' class='icon1'></image>
+          <text class='f1'>45</text>
+        </view>
+        <!-- 发布日期 -->
+        <view class='date'>
+          <image src='' class='icon2'></image>
+          <text class='f1'>2018-12-1</text>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+
+</block>

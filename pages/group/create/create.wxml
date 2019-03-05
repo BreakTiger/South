@@ -1,0 +1,19 @@
+<!-- 创建的公共群 -->
+
+<view class='pages'>
+  <view class='classlist' wx:for="[0,1]">
+    <view class='list-item'>
+      <!-- 群组头像 -->
+      <view class='header'>
+        <image src='/image/icon/join2.png'></image>
+      </view>
+      <!-- 群组描述 -->
+      <view class='info'>
+        <text class='classname'>易班</text>
+        <text class='classinfo'>群主：南方科技大学</text>
+        <text class='classinfo'>成员：12785人</text>
+      </view>
+    </view>
+  </view>
+
+</view>

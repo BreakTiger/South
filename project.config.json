@@ -37,30 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
-			"list": [
-				{
-					"id": 0,
-					"name": "创建的群",
-					"pathName": "pages/group/create/create",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "加入的群",
-					"pathName": "pages/group/join/join",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "机构群",
-					"pathName": "pages/group/institutions/institutions",
-					"query": "",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
