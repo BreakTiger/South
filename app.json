@@ -11,7 +11,8 @@
     "pages/group/topic-detail/topic-detail",
     "pages/mine/problem/problem",
     "pages/mine/problem-detail/problem-detail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/mine/results/results"
   ],
   "window": {
     "backgroundTextStyle": "light",

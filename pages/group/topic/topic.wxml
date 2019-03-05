@@ -18,12 +18,12 @@
       <view class='line'>
         <!-- 阅读人数 -->
         <view class='read'>
-          <image src='' class='icon1'></image>
+          <image src='/image/icon/eye.png' class='icon1'></image>
           <text class='f1'>45</text>
         </view>
         <!-- 发布日期 -->
         <view class='date'>
-          <image src='' class='icon2'></image>
+          <image src='/image/icon/time.png' class='icon2'></image>
           <text class='f1'>2018-12-1</text>
         </view>
 

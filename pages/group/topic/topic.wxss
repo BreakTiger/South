@@ -60,12 +60,12 @@
 
 .icon1 {
   width: 25rpx;
-  height: 14rpx;
-  background: red;
+  height: 25rpx;
+  
 }
 
 .icon2 {
   width: 22rpx;
-  height: 21rpx;
-  background: greenyellow;
+  height: 22rpx;
+  
 }

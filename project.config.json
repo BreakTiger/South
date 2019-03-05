@@ -37,23 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
-			"list": [
-				{
-					"id": 0,
-					"name": "1",
-					"pathName": "pages/group/topic-detail/topic-detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "2",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
