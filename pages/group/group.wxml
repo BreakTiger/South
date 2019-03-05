@@ -1,0 +1,24 @@
+<!-- 易班群 -->
+
+<view class='pages'>
+
+  <view class='box'>
+
+    <view class='line'>
+      <text>我创建的公共群</text>
+      <image src='/image/icon/arrow.png' class='right'></image>
+    </view>
+
+    <view class='line'>
+      <text>我加入的公共群</text>
+      <image src='/image/icon/arrow.png' class='right'></image>
+    </view>
+
+    <view class='line'>
+      <text>机构群</text>
+      <image src='/image/icon/arrow.png' class='right'></image>
+    </view>
+
+  </view>
+
+</view>

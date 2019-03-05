@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/information/information",
+    "pages/group/group",
+    "pages/mine/mine",
+    "pages/group/create/create",
+    "pages/group/join/join",
+    "pages/group/institutions/institutions"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F08D01",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#002522",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/tab/icon1.png",
+        "selectedIconPath": "image/tab/icon2.png"
+      },
+      {
+        "pagePath": "pages/information/information",
+        "text": "咨询",
+        "iconPath": "image/tab/icon3.png",
+        "selectedIconPath": "image/tab/icon4.png"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "text": "易班群",
+        "iconPath": "image/tab/icon5.png",
+        "selectedIconPath": "image/tab/icon6.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/tab/icon7.png",
+        "selectedIconPath": "image/tab/icon8.png"
+      }
+    ]
+  }
+}
