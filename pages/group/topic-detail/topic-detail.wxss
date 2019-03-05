@@ -1,0 +1,101 @@
+.content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uppart {
+  width: 680rpx;
+  height: auto;
+}
+
+.title {
+  font-size: 44rpx;
+  font-family: PingFang-SC-Bold;
+  color: #333;
+  font-weight: bold;
+  margin: 30rpx 0rpx;
+}
+
+.time-reads {
+  margin-bottom: 50rpx;
+}
+
+.time-reads text {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.colorline {
+  width: 750rpx;
+  height: 20rpx;
+  background: #f4f4f4;
+  margin-top: 30rpx;
+}
+
+.title-line {
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #d0d0d0;
+}
+
+.title-line text {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  font-family: PingFang-SC-Bold;
+  line-height: 50rpx;
+  margin-left: 35rpx;
+}
+
+.title-line image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 35rpx;
+}
+
+
+
+.user{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.header{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+
+.username {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: bold;
+  color: rgba(85, 85, 85, 1);
+  line-height: 54rpx;
+}
+
+.info{
+  width: 551rpx;
+  height: auto;
+  color: #000000;
+  font-size: 30rpx;
+  font-weight: bolder;
+}
+
+
+.talklist{
+  width: 100%;
+  height: auto;
+}
+
+

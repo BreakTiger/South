@@ -1,0 +1,32 @@
+.topic-line {
+  width: 750rpx;
+  height: 75rpx;
+  background: #f2f2f2;
+}
+
+.topic-line text {
+  font-size: 28rpx;
+  color: #9a9a9a;
+  line-height: 73rpx;
+  margin-left: 30rpx;
+}
+
+.right {
+  width: 14rpx;
+  height: 27rpx;
+}
+
+.lits-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e9e9e9;
+  padding: 30rpx 30rpx;
+}
+
+.lits-item text {
+  font-size: 34rpx;
+  color: #444444;
+  font-weight: bold;
+}

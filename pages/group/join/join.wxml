@@ -1,8 +1,8 @@
 <!-- 加入的公共群 -->
 
 <view class='pages'>
-  <view class='classlist' wx:for="[0,1]">
-    <view class='list-item'>
+  <view class='classlist' wx:for="[0,1]" wx:key="list-id">
+    <view class='list-item' bindtap='toTopic'>
       <!-- 群组头像 -->
       <view class='header'>
         <image src='/image/icon/join2.png'></image>

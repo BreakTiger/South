@@ -4,17 +4,17 @@
 
   <view class='box'>
 
-    <view class='line'>
+    <view class='line' bindtap='toCreate'>
       <text>我创建的公共群</text>
       <image src='/image/icon/arrow.png' class='right'></image>
     </view>
 
-    <view class='line'>
+    <view class='line' bindtap='toJoin'>
       <text>我加入的公共群</text>
       <image src='/image/icon/arrow.png' class='right'></image>
     </view>
 
-    <view class='line'>
+    <view class='line' bindtap='toInstitutions'>
       <text>机构群</text>
       <image src='/image/icon/arrow.png' class='right'></image>
     </view>

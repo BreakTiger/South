@@ -1,4 +1,4 @@
-// pages/group/group.js
+// pages/group/topic-detail/topic-detail.js
 Page({
 
   /**
@@ -14,29 +14,6 @@ Page({
   onLoad: function (options) {
 
   },
-
-
-  // 页面跳转
-
-  toCreate:function(){
-    wx.navigateTo({
-      url: '/pages/group/create/create',
-    })
-  },
-
-  toJoin:function(){
-    wx.navigateTo({
-      url: '/pages/group/join/join',
-    })
-  },
-
-  toInstitutions:function(){
-    wx.navigateTo({
-      url: '/pages/group/institutions/institutions',
-    })
-  },
-
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

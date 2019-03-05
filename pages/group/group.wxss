@@ -23,7 +23,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 30rpx 0rpx;
+  padding: 45rpx 0rpx;
   border-bottom: 1rpx solid #E9E9E9;
 }
 

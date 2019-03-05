@@ -7,7 +7,9 @@
     "pages/group/create/create",
     "pages/group/join/join",
     "pages/group/institutions/institutions",
-    "pages/group/topic/topic"
+    "pages/group/topic/topic",
+    "pages/group/topic-detail/topic-detail",
+    "pages/mine/problem/problem"
   ],
   "window": {
     "backgroundTextStyle": "light",

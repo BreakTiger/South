@@ -1,10 +1,17 @@
 <!-- 我的 -->
 
-<view class='pages'>
-
-  <view class='box'>
-
-  
+<view class='topbox'>
+  <image src='/image/icon/bk.png' class='bk'></image>
+  <view class='user'>
+    <image src='/image/icon/header.png' class='header'></image>
+    <view class='username'>广广西</view>
   </view>
+</view>
 
+<view class='returnline'bindtap='toproblem'>
+  <view class='return' >
+    <image src='/image/icon/feedback.png' class='p1'></image>
+    <text>反馈</text>
+  </view>
+  <image src='/image/icon/arrow.png' class='p2'></image>
 </view>

@@ -1,6 +1,63 @@
 /* 我的 */
 
-.pages{
+.topbox {
+  position: relative;
+}
+
+.bk {
   width: 750rpx;
-  height: 100%;
+  height: 272rpx;
+}
+
+.user {
+  width: 750rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 64rpx;
+}
+
+.header {
+  width: 142rpx;
+  height: 142rpx;
+  border-radius: 50%;
+  margin: 0 30rpx;
+}
+
+.p1 {
+  width: 30rpx;
+  height: 31rpx;
+  margin-right: 20rpx;
+}
+
+.p2 {
+  width: 14rpx;
+  height: 27rpx;
+  margin-right: 30rpx;
+}
+
+.returnline {
+  width: 750rpx;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e9e9e9;
+  padding: 30rpx 0rpx;
+}
+
+.return {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 30rpx;
+}
+
+.return text {
+  font-size: 34rpx;
+  color: #444;
+  font-weight: bold;
+  font-family: PingFang-SC-Bold;
 }
