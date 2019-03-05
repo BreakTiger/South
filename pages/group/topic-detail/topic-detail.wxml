@@ -31,7 +31,7 @@
 
 
   <view class='user'>
-    <image src='/image/icon/auoth.png' class='header'></image>
+    <image src='/image/icon/auoth1.png' class='header'></image>
     <view class='name-info'>
       <view class='username'>Jackson花菜炒肉</view>
       <view class='info'>我希望我的作品可以得一等奖</view>

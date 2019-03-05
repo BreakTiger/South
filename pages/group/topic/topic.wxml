@@ -1,9 +1,9 @@
 <!-- 群话题 -->
 
 
-<block wx:for="[0,1]">
+<block wx:for="[0,1]" wx:key="list-id">
 
-  <view class='list-item'>
+  <view class='list-item' bindtap='toTopic'>
 
     <!-- 话题图片 -->
     <view class='p1'>

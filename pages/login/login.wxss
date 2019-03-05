@@ -1,0 +1,63 @@
+.content{
+  width: 750rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-name{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80rpx 0;
+}
+
+.logo{
+  width: 129rpx;
+  height: 131rpx;
+  margin-bottom: 20rpx;
+}
+
+.logo-name view{
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #212121;
+}
+
+.colorline{
+  width: 610rpx;
+  height: 1rpx;
+  background: #D8D8D8;
+  margin-bottom: 65rpx;
+}
+
+.topic{
+  width: 610rpx;
+  height: 80rpx;
+  font-size: 32rpx;
+  color: #222222;
+  font-weight: bold;
+  margin-bottom: 40rpx;
+}
+
+.topic2{
+  width: 610rpx;
+  font-size: 30rpx;
+  color: #868686;
+  margin-bottom: 140rpx;
+}
+
+
+.btn{
+  width: 610rpx;
+  height: 92rpx;
+  background: #F08D01;
+  border-radius:8px;
+  font-size: 36rpx;
+  color: #ffffff;
+  line-height: 85rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
