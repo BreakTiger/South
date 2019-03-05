@@ -9,7 +9,8 @@
     "pages/group/institutions/institutions",
     "pages/group/topic/topic",
     "pages/group/topic-detail/topic-detail",
-    "pages/mine/problem/problem"
+    "pages/mine/problem/problem",
+    "pages/mine/problem-detail/problem-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
