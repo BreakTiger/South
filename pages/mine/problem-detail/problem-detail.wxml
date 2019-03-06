@@ -6,7 +6,7 @@
 
   <view class='area'>
     <!-- 文本域 -->
-    <textarea placeholder-class="place-holder" placeholder="请填写5个字以上的问题描述以便我们提供更好的帮助" name="introduction" maxlength='20' bindinput='limit' value="{{text}}"></textarea>
+    <textarea placeholder-class="place-holder" placeholder="请填写5个字以上的问题描述以便我们提供更好的帮助" name="introduction" maxlength='200' bindinput='limit' value="{{text}}"></textarea>
     <!-- 显示字数 -->
     <view class="clear">
       <text>{{current}} / {{max}} </text>
@@ -20,8 +20,8 @@
       <view class='spicture'>
         <!-- 图片缩略图 -->
         <image class='insets' src='{{item}}' data-index='{{index}}'></image>
-        <!-- 删除按钮 -->
 
+        <!-- 删除按钮 -->
         <view class='delet'>
           <image class='rectangular' src='/image/icon/box.png'></image>
           <image class='del' src='/image/icon/del1.png' bindtap='toDelet'></image>
@@ -32,13 +32,9 @@
     </block>
 
     <!-- 图片添加框 -->
-    <!-- <view class='addbox coun' wx:if="{{imglist.length!=4}}"> -->
-    <view class='addbox coun' bindtap='addpicture'>
-
+    <view class='addbox coun' wx:if="{{imglist.length!=4}}" bindtap='addpicture'>
       <image src='/image/icon/add.png'></image>
-
       <text>{{imglist.length}}/{{imgmax}}</text>
-
     </view>
 
   </view>
