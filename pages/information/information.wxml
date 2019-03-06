@@ -1,1 +1,40 @@
-<!-- 咨询 -->
+<view class='container'>
+
+  <!-- 顶部切换栏 -->
+  <view class='top-switch-line row'>
+
+
+    <!-- 俩个切换钮有俩种样式状态 -->
+
+    <!-- 易班资讯 -->
+    <view class='inforbtn coun' bindtap='seletcInfo'>
+      <text class='befor' wx:if="{{choose1==0}}">易班资讯</text>
+      <text class='after' wx:if="{{choose1==1}}">易班资讯</text>
+      <view class='cpoint' wx:if="{{choose1==1}}"></view>
+    </view>
+
+    <view class='notice coun' bindtap='seletcNotice'>
+      <text class='befor' wx:if="{{choose2==0}}">通知公告</text>
+      <text class='after' wx:if="{{choose2==1}}">通知公告</text>
+      <view class='cpoint' wx:if="{{choose2==1}}"></view>
+    </view>
+
+
+
+
+
+
+  </view>
+
+  <!-- 易班资讯 -->
+  <view class='' wx:if="{{choose1==1}}">
+  1111
+  </view>
+
+  <!-- 通知公告 -->
+  <view class='' wx:if="{{choose2==1}}">
+  2222
+  </view>
+
+
+</view>
