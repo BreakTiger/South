@@ -19,7 +19,7 @@ Page({
       date: '2018-9-1'
     }, {
       img: '/image/info/info3.png',
-        title: '南科大举办著名高校物理系主任论坛',
+      title: '南科大举办著名高校物理系主任论坛',
       reads: '11',
       date: '2018-9-1'
     }, {
@@ -32,8 +32,7 @@ Page({
       title: '深圳北理莫斯科大学代理校长唐水源来校访问',
       reads: '5',
       date: '2018-9-1'
-    }, ]
-
+    }]
   },
 
   /**
@@ -75,6 +74,21 @@ Page({
 
 
 
+  },
+
+  // 页面跳转
+  toInformation: function() {
+    let that = this
+    wx.navigateTo({
+      url: '/pages/information/classinfo/classinfo',
+    })
+  },
+
+  toNotice: function() {
+    let that = this
+    wx.navigateTo({
+      url: '/pages/information/notice/notice',
+    })
   },
 
   /**

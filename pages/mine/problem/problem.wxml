@@ -1,9 +1,13 @@
 <view class='topic-line'>
   <text>请选择反馈内容</text>
 </view>
-<view class='list' wx:for="[0,1]" wx:key="list-id">
-  <view class='lits-item' bindtap='toUpproblem'>
-    <text>问题一</text>
-    <image src='/image/icon/arrow.png' class='right'></image>
-  </view>
+<view class='list'>
+
+  <block wx:for="{{prolist}}" wx:key="list-id">
+    <view class='lits-item' bindtap='toUpproblem'>
+      <text>{{item}}</text>
+      <image src='/image/icon/arrow.png' class='right'></image>
+    </view>
+  </block>
+
 </view>

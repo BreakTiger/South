@@ -25,6 +25,7 @@
   <view class='coun' wx:if="{{choose1==1}}">
 
     <block wx:for="{{infor}}" wx:key="list-id">
+    
       <view class='info-list-item' data-id='' bindtap='toInformation'>
 
         <!-- 话题图片 -->
@@ -61,9 +62,9 @@
   <!-- 通知公告 -->
   <view class='coun' wx:if="{{choose2==1}}">
 
-    <block wx:for="[0,1]" wx:key="list-id" bindtap="toNotice">
+    <block wx:for="[0,1]" wx:key="list-id" >
 
-      <view class='notice-list-item' data-id='' bind>
+      <view class='notice-list-item' data-id='' bindtap="toNotice">
 
         <view style='display:flex;flex-direction:row;margin-bottom:20rpx;'>
           <view class='point'></view>

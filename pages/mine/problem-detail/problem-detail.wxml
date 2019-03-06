@@ -1,2 +1,62 @@
-<!--pages/mine/problem-detail/problem-detail.wxml-->
-<text>pages/mine/problem-detail/problem-detail.wxml</text>
+<view class='container'>
+
+  <view class='top-title'>
+    <text>意见与建议</text>
+  </view>
+
+  <view class='area'>
+    <!-- 文本域 -->
+    <textarea placeholder-class="place-holder" placeholder="请填写5个字以上的问题描述以便我们提供更好的帮助" name="introduction" maxlength='20' bindinput='limit' value="{{text}}"></textarea>
+    <!-- 显示字数 -->
+    <view class="clear">
+      <text>{{current}} / {{max}} </text>
+    </view>
+  </view>
+
+  <view class='picture'>
+    <!-- 缩略图 -->
+    <block wx:for="{{imglist}}" wx:key="unquire">
+
+      <view class='spicture'>
+        <!-- 图片缩略图 -->
+        <image class='insets' src='{{item}}'></image>
+        <!-- 删除按钮 -->
+
+        <view class='delet'>
+          <image class='rectangular' src='/image/icon/box.png'></image>
+          <image class='del' src='/image/icon/del1.png'></image>
+        </view>
+
+      </view>
+
+    </block>
+
+    <!-- 图片添加框 -->
+    <view class='addbox coun'>
+
+      <image src='/image/icon/add.png'></image>
+
+      <text>0/4</text>
+
+    </view>
+
+  </view>
+
+
+
+
+
+  <view class='line'>请输入有效的联系方式，以便开发者l联系你（选填）</view>
+
+  <view class='input-line row'>
+    <text>联系方式：</text>
+    <input placeholder='邮箱/手机号'></input>
+  </view>
+
+  <button class='upBtn'>提交</button>
+
+
+
+
+
+</view>

@@ -4,7 +4,7 @@
 
   <!-- 轮播图 -->
 
-  <swiper class='home-swiper' autoplay='true' bindchange='changDot' interval='4000'>
+  <swiper class='home-swiper' autoplay='true' interval='4000'>
     <block wx:for="{{lunbo}}" wx:key="list-id">
       <swiper-item>
         <image src='{{item}}'></image>
