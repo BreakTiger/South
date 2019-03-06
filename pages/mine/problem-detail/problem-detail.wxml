@@ -15,16 +15,16 @@
 
   <view class='picture'>
     <!-- 缩略图 -->
-    <block wx:for="{{imglist}}" wx:key="unquire">
+    <block wx:for="{{imglist}}" wx:key="unquire" wx:if="{{imglist.length!=0}}">
 
       <view class='spicture'>
         <!-- 图片缩略图 -->
-        <image class='insets' src='{{item}}'></image>
+        <image class='insets' src='{{item}}' data-index='{{index}}'></image>
         <!-- 删除按钮 -->
 
         <view class='delet'>
           <image class='rectangular' src='/image/icon/box.png'></image>
-          <image class='del' src='/image/icon/del1.png'></image>
+          <image class='del' src='/image/icon/del1.png' bindtap='toDelet'></image>
         </view>
 
       </view>
@@ -32,11 +32,12 @@
     </block>
 
     <!-- 图片添加框 -->
-    <view class='addbox coun'>
+    <!-- <view class='addbox coun' wx:if="{{imglist.length!=4}}"> -->
+    <view class='addbox coun' bindtap='addpicture'>
 
       <image src='/image/icon/add.png'></image>
 
-      <text>0/4</text>
+      <text>{{imglist.length}}/{{imgmax}}</text>
 
     </view>
 

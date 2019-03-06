@@ -52,6 +52,7 @@
 .insets {
   width: 158rpx;
   height: 158rpx;
+  border-radius:28rpx;
 }
 
 .delet {

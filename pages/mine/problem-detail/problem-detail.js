@@ -1,4 +1,4 @@
-// pages/mine/problem-detail/problem-detail.js
+import modals from '../../../class/methods/modal.js'
 Page({
 
   /**
@@ -7,12 +7,9 @@ Page({
   data: {
     current: 0,
     max: 20,
-    imglist:[
-      '/image/icon/small.png',
-      '/image/icon/small.png',
-      '/image/icon/small.png',
-      '/image/icon/small.png'
-    ]
+    imglist: [],
+    imgmax: 4
+
   },
 
   /**
@@ -39,6 +36,45 @@ Page({
         current: length
       });
     }
+  },
+
+  // 添加图片
+  addpicture: function() {
+    let that = this
+    // 获取需要的数据
+    var list = that.data.imglist;
+    var maxs = that.data.imgmax;
+    console.log('已经上传张数：', list.length);
+    console.log('最大允许的上传张数', maxs);
+
+    if (list.length == maxs){
+
+    }else{
+      wx.chooseImage({
+        count:4,
+        sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
+        sourceType: ['album', 'camera'], 
+        success: function(res) {
+          console.log(res);
+        },
+      })
+    }
+
+    
+
+
+
+
+
+   
+  },
+
+  // 删除图片
+  toDelet: function(e) {
+    let that = this
+    // 获取当前要删除的图片的下标
+
+
   },
 
   /**
