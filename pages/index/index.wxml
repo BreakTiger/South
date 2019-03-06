@@ -1,2 +1,73 @@
 <!-- 首页 -->
 
+<view class='container'>
+
+  <!-- 轮播图 -->
+
+  <swiper class='home-swiper' autoplay='true' bindchange='changDot' interval='4000'>
+    <block wx:for="{{lunbo}}" wx:key="list-id">
+      <swiper-item>
+        <image src='{{item}}'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 导航容器 -->
+  <view class='navbox'>
+    <block wx:for="{{navlist}}" wx:key="list-id">
+      <view class='logobox' bindtap='selectKinds'>
+        <view class='logo'>
+          <image src='{{item.icon}}'></image>
+        </view>
+        <text class='logo_text'>{{item.nav}}</text>
+      </view>
+    </block>
+
+
+
+
+
+  </view>
+
+  <view class='titleline'>
+    <view class='title'>
+      <text class=''>通知公告</text>
+      <view style='width:100rpx;height:8rpx;background:linear-gradient(90deg,rgba(240,143,2,1) 0%,rgba(255,210,24,1) 100%);opacity:0.6;margin-top:-8rpx;'></view>
+    </view>
+    <image src='/image/icon/arrow.png' class='arrow'></image>
+  </view>
+
+  <view class='notice-list' wx:for="[0,1]" wx:key="list-id">
+    <view class='list-item'>
+      <view style='display:flex;flex-direction:row;margin-bottom:35rpx;'>
+        <view class='point'></view>
+        <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
+      </view>
+
+      <view class='row' style='justify-content:flex-end;'>
+        <view class='read'>
+          <image src='/image/icon/eye.png'></image>
+          <text>45</text>
+        </view>
+
+        <view class='time'>
+          <image src='/image/icon/time.png'></image>
+          <text>2018 01-1</text>
+        </view>
+      </view>
+
+
+
+
+
+    </view>
+
+  </view>
+
+
+
+
+
+
+
+</view>
