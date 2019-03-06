@@ -9,6 +9,8 @@ App({
     // 登录
     wx.login({
       success: res => {
+        let code = res.code
+        wx.setStorageSync('code', code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
@@ -34,6 +36,10 @@ App({
     })
   },
   globalData: {
+    api:'',
+    openid:'',
+    addText:'',
+    endText:'',
     userInfo: null
   }
 })

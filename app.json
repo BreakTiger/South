@@ -12,7 +12,9 @@
     "pages/mine/problem/problem",
     "pages/mine/problem-detail/problem-detail",
     "pages/login/login",
-    "pages/mine/results/results"
+    "pages/mine/results/results",
+    "pages/information/classinfo/classinfo",
+    "pages/information/notice/notice"
   ],
   "window": {
     "backgroundTextStyle": "light",

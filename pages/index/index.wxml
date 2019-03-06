@@ -39,12 +39,14 @@
 
   <view class='notice-list' wx:for="[0,1]" wx:key="list-id">
     <view class='list-item'>
+
       <view style='display:flex;flex-direction:row;margin-bottom:35rpx;'>
         <view class='point'></view>
         <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
       </view>
 
       <view class='row' style='justify-content:flex-end;'>
+
         <view class='read'>
           <image src='/image/icon/eye.png'></image>
           <text>45</text>
@@ -54,6 +56,7 @@
           <image src='/image/icon/time.png'></image>
           <text>2018 01-1</text>
         </view>
+        
       </view>
 
 

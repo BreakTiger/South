@@ -19,21 +19,82 @@
       <view class='cpoint' wx:if="{{choose2==1}}"></view>
     </view>
 
-
-
-
-
-
   </view>
 
   <!-- 易班资讯 -->
-  <view class='' wx:if="{{choose1==1}}">
-  1111
+  <view class='coun' wx:if="{{choose1==1}}">
+
+    <block wx:for="{{infor}}" wx:key="list-id">
+      <view class='info-list-item' data-id='' bindtap='toInformation'>
+
+        <!-- 话题图片 -->
+        <view class='p1'>
+          <image src='{{item.img}}'></image>
+        </view>
+
+        <!-- 话题信息 -->
+        <view class='topicinfo'>
+          <!-- 话题标题 -->
+          <view class='title'>{{item.title}}</view>
+
+          <view class='line'>
+            <!-- 阅读人数 -->
+            <view class='read'>
+              <image src='/image/icon/eye.png' class='icon1'></image>
+              <text class='f1'>{{item.reads}}</text>
+            </view>
+            <!-- 发布日期 -->
+            <view class='date'>
+              <image src='/image/icon/time.png' class='icon2'></image>
+              <text class='f1'>{{item.date}}</text>
+            </view>
+
+          </view>
+
+        </view>
+
+      </view>
+    </block>
+
   </view>
 
   <!-- 通知公告 -->
-  <view class='' wx:if="{{choose2==1}}">
-  2222
+  <view class='coun' wx:if="{{choose2==1}}">
+
+    <block wx:for="[0,1]" wx:key="list-id" bindtap="toNotice">
+
+      <view class='notice-list-item' data-id='' bind>
+
+        <view style='display:flex;flex-direction:row;margin-bottom:20rpx;'>
+          <view class='point'></view>
+          <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
+        </view>
+
+
+
+        <view class='row' style='justify-content:flex-end;'>
+
+          <view class='read'>
+            <image src='/image/icon/eye.png' class='icon1'></image>
+            <text class='f1'>45</text>
+          </view>
+
+          <view class='time'>
+            <image src='/image/icon/time.png' class='icon2'></image>
+            <text class='f1'>2018 01-1</text>
+          </view>
+
+        </view>
+
+
+      </view>
+    </block>
+
+
+
+
+
+
   </view>
 
 

@@ -6,12 +6,14 @@
 
 .inforbtn {
   width: 50%;
-  text-align: center;
+  height: 100%;
+  padding-top: 42rpx;
 }
 
 .notice {
   width: 50%;
-  text-align: center;
+  height: 100%;
+  padding-top: 42rpx;
 }
 
 .befor {
@@ -19,6 +21,7 @@
   font-family: PingFang-SC-Bold;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
+  padding-top: 18rpx;
 }
 
 .after {
@@ -32,7 +35,95 @@
   width: 21rpx;
   height: 15rpx;
   background: rgba(240, 141, 1, 1);
-  border-radius:50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
   position: relative;
   top: 24rpx;
+}
+
+.info-list-item {
+  width: 730rpx;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid #e7e7e7;
+  margin-top: 10rpx;
+}
+
+.p1 {
+  width: 310rpx;
+  height: 220rpx;
+}
+
+.p1 image {
+  width: 100%;
+  height: 100%;
+}
+
+.topicinfo {
+  width: 440rpx;
+  height: 220rpx;
+  padding-top: 20rpx;
+}
+
+.title {
+  width: 410rpx;
+  height: 75rpx;
+  font-size: 34rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 60rpx;
+}
+
+.line {
+  width: 410rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: row;
+  justify-content: flex-end;
+}
+
+.read {
+  margin-right: 30rpx;
+}
+
+.f1 {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.icon1 {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.icon2 {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.notice-list-item {
+  width: 730rpx;
+  height: 152rpx;
+  background: #f6f6f6;
+  margin-top: 25rpx;
+}
+
+.point {
+  width: 12rpx;
+  height: 22rpx;
+  background: rgba(240, 145, 2, 1);
+  border: 1rpx solid rgba(243, 243, 243, 1);
+  border-radius: 12rpx;
+  margin-top: 6rpx;
+  margin-right: 10rpx;
+}
+
+.noticetitle {
+  width: 690rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
 }
