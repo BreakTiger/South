@@ -36,7 +36,7 @@ App({
     })
   },
   globalData: {
-    api:'',
+    api:'http://nankeda.heifeng.xin/',
     openid:'',
     addText:'',
     endText:'',

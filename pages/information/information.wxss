@@ -1,135 +1,129 @@
-.top-swiper-tab {
+.top-line {
   width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  height: 120rpx;
   border-bottom: 1rpx solid #d5d5d5;
-  padding: 20rpx 0;
 }
 
-.swiper-tab-list {
+.type {
   width: 50%;
-  text-align: center;
+  height: 100%;
 }
 
-.list-item {
+.type-name {
   font-size: 36rpx;
   font-weight: bold;
   color: #333;
+  margin-top: 30rpx;
 }
 
 .active {
   font-size: 48rpx;
+  font-weight: bold;
   color: #f08d01;
 }
 
-.cpoint {
+.cpioint {
   width: 21rpx;
   height: 15rpx;
   background: rgba(240, 141, 1, 1);
   border-radius: 50px 50px 0 0;
-  position: relative;
-  top: 24rpx;
-  left: 182rpx;
+  position: absolute;
+  top: 106rpx;
 }
 
-.on {
-  color: #da7c0c;
-  border-bottom: 5rpx solid #da7c0c;
+.tab-content {
+  margin-top: 20rpx;
 }
 
-.classlist-item {
+.list-box {
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-item {
+  width: 730rpx;
   border-bottom: 1rpx solid #e7e7e7;
 }
 
-.title {
-  width: 410rpx;
-  height: 117rpx;
-  font-size: 34rpx;
-  font-weight: bold;
-  color: #555;
-  margin-bottom: 50rpx;
-}
-
-.p1 {
+.list-item image {
   width: 310rpx;
   height: 225rpx;
 }
 
-.infobox {
-  width: 410rpx;
+.info-box {
+  width: 420rpx;
+  height: 225rpx;
 }
 
-.line {
-  width: 410rpx;
+.class-title {
+  width: 420rpx;
+  height: 110rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #555;
+  margin-top: 15rpx;
+  margin-bottom: 20rpx;
+}
+
+.class-line {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: flex-end;
 }
 
 .reads image {
   width: 25rpx;
-  height: 30rpx;
+  height: 25rpx;
 }
 
 .reads text {
   font-size: 24rpx;
   color: #666;
-  margin-left: 10rpx;
-}
-
-.time {
-  margin-left: 20rpx;
+  margin: 0 20rpx;
 }
 
 .time image {
-  width: 27rpx;
-  height: 30rpx;
+  width: 22rpx;
+  height: 21rpx;
 }
 
 .time text {
   font-size: 24rpx;
   color: #666;
-  margin-left: 10rpx;
+  margin: 0 20rpx;
 }
 
-.noticelist-item {
+.notice-item {
   width: 730rpx;
   background: #f6f6f6;
-  margin-top: 25rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25rpx;
 }
 
 .point {
   width: 12rpx;
   height: 22rpx;
-  background: rgba(240, 145, 2, 1);
-  border: 1rpx solid rgba(243, 243, 243, 1);
+  background: #f08d01;
   border-radius: 12rpx;
-  margin-top: 6rpx;
-  margin-right: 10rpx;
+  margin: 15rpx 0;
 }
 
-.noticetitle {
-  width: 690rpx;
-  height: 80rpx;
+.notice-title{
+  width: 689rpx;
+  height: 69rpx;
   font-size: 30rpx;
+  font-weight: bold;
   color: #333;
+  margin-bottom: 30rpx;
 }
 
-.icon1 {
-  width: 25rpx;
-  height: 30rpx;
-}
+.notice-box{
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx
 
-.icon2 {
-  width: 27rpx;
-  height: 30rpx;
-}
-
-.f1 {
-  font-size: 24rpx;
-  color: #666;
-  margin-left: 10rpx;
 }

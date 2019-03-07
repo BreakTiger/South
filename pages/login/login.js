@@ -1,4 +1,7 @@
-// pages/login/login.js
+const app = getApp()
+const request = require('../../class/api/htts.js')
+
+
 Page({
 
   /**
@@ -16,7 +19,10 @@ Page({
   },
 
   confirm: function(e) {
+    let that = this
     console.log(e);
+    // 获取需要的数据
+    
   },
 
   /**

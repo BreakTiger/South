@@ -1,86 +1,68 @@
-<!-- 顶部切换栏 -->
-<view class='top-swiper-tab'>
+<!-- 顶部导航栏 -->
+<view class='top-line row'>
 
-  <view class='swiper-tab-list'>
-    <text class="list-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">易班资讯</text>
-    <view class="{{currentTab==0 ? 'cpoint' : ''}}"></view>
+  <view class='type coun' bindtap='selectType' data-current="0">
+    <view class="type-name {{currentTab==0 ? 'active' : ''}}">易班资讯</view>
+    <view class="{{currentTab==0 ? 'cpioint' : ''}}"></view>
   </view>
 
-  <view class='swiper-tab-list'>
-    <text class="list-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">通知公告</text>
-    <view class="{{currentTab==1 ? 'cpoint' : ''}}"></view>
+
+  <view class='type coun' bindtap='selectType' data-current="1">
+    <view class="type-name {{currentTab==1 ? 'active' : ''}}">通知公告</view>
+    <view class="{{currentTab==1 ? 'cpioint' : ''}}"></view>
   </view>
 
 </view>
 
-<swiper current="{{currentTab}}" class="swiper-box" duration="500" style="height:{{winHeight}}px" bindchange="bindChange">
 
-  <swiper-item>
+<!-- 主体内容 -->
+<swiper class='tab-content' current="{{currentTab}}" duration='500' bindchange="sChange" style='height:{{winHeight}}rpx'>
 
-    <block wx:for="[0,1]" wx:key="list-id">
+  <swiper-item class="box1">
+    <view class='list-box' wx:for="[0,1]" wx:key="list-id">
 
-      <view class='row classlist-item' bindtap='toInformation'>
-        <image src='/image/info/info1.png' class='p1'></image>
-        <view class='coun infobox'>
-          <view class='title'>宾夕法尼亚大学陈一伟教授南科大讲堂分享新型阻变存储材料的研究</view>
-          <view class='line'>
+      <view class='list-item row' bindtap='toClass'>
+        <image src='/image/info/info1.png'></image>
+        <view class='info-box'>
+          <view class='class-title'>宾夕法尼亚大学陈一伟教授南科大讲堂分享新型阻变存储材料的研究</view>
 
-            <!-- 阅读人数 -->
+          <view class='class-line'>
             <view class='reads row'>
               <image src='/image/icon/eye.png'></image>
               <text>45</text>
             </view>
-
-            <!-- 发布时间 -->
             <view class='time row'>
               <image src='/image/icon/time.png'></image>
-              <text>2018-1-01</text>
+              <text>2018 1-01</text>
             </view>
-
           </view>
 
         </view>
+
       </view>
 
-    </block>
-
-
-
+    </view>
   </swiper-item>
 
   <swiper-item>
-    <view class='container'>
-
-      <block wx:for="[0,1]" wx:key="list-id">
-
-        <view class='noticelist-item' data-id=''bindtap="toNotice">
-
-          <view style='display:flex;flex-direction:row;margin-bottom:20rpx;'>
-            <view class='point'></view>
-            <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
-          </view>
-
-          <view class='row' style='justify-content:flex-end;'>
-
-            <view class='read'>
-              <image src='/image/icon/eye.png' class='icon1'></image>
-              <text class='f1'>45</text>
+    <view class='list-box' wx:for="[0,1]" wx:key="list-id">
+      <view class='notice-item' bindtap='toNotice'>
+        <view class='point'></view>
+        <view class='notice-box'>
+          <view class='notice-title'>机遇与挑战：世界一流理工科大学的文科建设高峰论坛邀请函。</view>
+          <view class='class-line'>
+            <view class='reads row'>
+              <image src='/image/icon/eye.png'></image>
+              <text>45</text>
             </view>
-
-            <view class='time'>
-              <image src='/image/icon/time.png' class='icon2'></image>
-              <text class='f1'>2018 01-1</text>
+            <view class='time row'>
+              <image src='/image/icon/time.png'></image>
+              <text>2018 1-01</text>
             </view>
-
           </view>
-
         </view>
-      </block>
-
-
+      </view>
     </view>
-
-
   </swiper-item>
 
 </swiper>

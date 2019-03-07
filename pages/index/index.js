@@ -1,3 +1,6 @@
+import modals from '../../class/methods/modal.js'
+const request = require('../../class/api/htts.js')
+
 var app = getApp()
 
 Page({
@@ -38,7 +41,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
 
+
+
+
+
+  },
+
+  // 轮播接口
+  lunbo:function(){
+    let that = this
+    
   },
 
   // switchNotice: function() {
