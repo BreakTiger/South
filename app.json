@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/information/information",
     "pages/group/group",
@@ -11,7 +12,6 @@
     "pages/group/topic-detail/topic-detail",
     "pages/mine/problem/problem",
     "pages/mine/problem-detail/problem-detail",
-    "pages/login/login",
     "pages/mine/results/results",
     "pages/information/classinfo/classinfo",
     "pages/information/notice/notice"

@@ -32,7 +32,7 @@
     </block>
 
     <!-- 图片添加框 -->
-    <view class='addbox coun' wx:if="{{imglist.length!=4}}" bindtap='addpicture'>
+    <view class='addbox coun' wx:if="{{imglist.length<4}}" bindtap='addpicture'>
       <image src='/image/icon/add.png'></image>
       <text>{{imglist.length}}/{{imgmax}}</text>
     </view>

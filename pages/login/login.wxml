@@ -11,6 +11,6 @@
 
   <view class='topic2'> · 你的公开信息（昵称、头像、地区及性别）</view>
 
-  <view class='btn'>允许使用</view>
+  <button open-type="getUserInfo"  class='btn' bindgetuserinfo="confirm">允许使用</button>
 
 </view>
