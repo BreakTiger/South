@@ -8,7 +8,7 @@ Page({
     current: 0,
     max: 20,
     imglist: [],
-    imgmax:4
+    imgmax: 4
   },
 
   /**
@@ -40,7 +40,8 @@ Page({
   // 添加图片
   addpicture: function() {
     let that = this
-    var imgbox = that.data.imglist
+    var imgbox = that.data.imglist;
+
     wx.chooseImage({
       count: 4,
       sizeType: ['original', 'compressed'],
@@ -48,9 +49,10 @@ Page({
       success: function(res) {
         console.log(res);
         var tempFilePaths = res.tempFilePaths;
+        
         if (imgbox.length == 0) {
           imgbox = tempFilePaths
-        } else if (9 > imgbox.length) {
+        } else if (4 > imgbox.length) {
           imgbox = imgbox.concat(tempFilePaths);
         } else {
           imgbox[picid] = tempFilePaths[0];
@@ -62,6 +64,20 @@ Page({
       },
     })
 
+  },
+
+  // 删除图片
+  toDelet: function(e) {
+    let that = this
+    console.log(e);
+    var index = e.currentTarget.dataset.index
+    console.log('图片下标：',index);
+    // 获取储存图片的数组
+    var list = that.data.imglist;
+    list.splice(index,1)
+    that.setData({
+      imglist:list
+    })
   },
 
   /**

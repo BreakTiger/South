@@ -19,12 +19,12 @@
 
       <view class='spicture'>
         <!-- 图片缩略图 -->
-        <image class='insets' src='{{item}}' data-index='{{index}}'></image>
+        <image class='insets' src='{{item}}'></image>
 
         <!-- 删除按钮 -->
-        <view class='delet'>
+        <view class='delet' bindtap='toDelet' data-index='{{index}}'>
           <image class='rectangular' src='/image/icon/box.png'></image>
-          <image class='del' src='/image/icon/del1.png' bindtap='toDelet'></image>
+          <image class='del' src='/image/icon/del1.png' ></image>
         </view>
 
       </view>
