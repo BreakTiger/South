@@ -1,3 +1,5 @@
+var app = getApp()
+
 Page({
 
   /**
@@ -10,7 +12,7 @@ Page({
     ],
     navlist: [{
       icon: '/image/nav/icon1.png',
-      nav: '综合评价'
+      nav: '综合测评'
     }, {
       icon: '/image/nav/icon2.png',
       nav: '成绩查询'
@@ -37,6 +39,21 @@ Page({
    */
   onLoad: function(options) {
 
+  },
+
+  // switchNotice: function() {
+  //   let that = that
+  //   wx.switchTab({
+  //     url: '/pages/information/information',
+  //   })
+  // },
+
+
+  // 进入通知详情
+  toNotice: function() {
+    wx.navigateTo({
+      url: '/pages/information/notice/notice',
+    })
   },
 
   /**

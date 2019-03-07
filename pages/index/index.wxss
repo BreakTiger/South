@@ -1,16 +1,3 @@
-/* 首页 */
-
-/* 整体容器 */
-
-.container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 轮播图 */
-
 .home-swiper {
   width: 100%;
   height: 418rpx;
@@ -103,7 +90,6 @@
 
 .list-item {
   width: 730rpx;
-  height: 152rpx;
   background: #f6f6f6;
   margin-bottom: 25rpx;
 }

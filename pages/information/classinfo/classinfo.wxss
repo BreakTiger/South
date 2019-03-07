@@ -1,1 +1,46 @@
-/* pages/information/classinfo/classinfo.wxss */
+.title {
+  width: 689rpx;
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+  margin-top: 50rpx;
+}
+
+.date-read-line {
+  width: 689rpx;
+  margin-top: 20rpx;
+}
+
+.date-read-line text {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.p {
+  width: 654rpx;
+  height: 435rpx;
+  margin-top: 50rpx;
+}
+
+.m1 {
+  width: 653rpx;
+  font-size: 36rpx;
+  color: #444;
+  margin-top: 45rpx;
+}
+
+.ex {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.provide{
+  width: 654rpx;
+  font-size: 36rpx;
+  color: #4444;
+  margin: 60rpx 0;
+}
+
+.reads{
+  margin-left: 35rpx;
+}

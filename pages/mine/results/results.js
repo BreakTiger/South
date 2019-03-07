@@ -14,7 +14,12 @@ Page({
   onLoad: function (options) {
 
   },
-
+  
+  backmine:function(){
+    wx.reLaunch({
+      url: '/pages/mine/mine',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

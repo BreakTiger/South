@@ -40,6 +40,8 @@ App({
     openid:'',
     addText:'',
     endText:'',
-    userInfo: null
+    userInfo: null,
+    status1:null,
+    status2:null
   }
 })

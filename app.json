@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
     "pages/information/information",
     "pages/group/group",
     "pages/mine/mine",
@@ -34,7 +34,7 @@
       },
       {
         "pagePath": "pages/information/information",
-        "text": "咨询",
+        "text": "资讯",
         "iconPath": "image/tab/icon3.png",
         "selectedIconPath": "image/tab/icon4.png"
       },

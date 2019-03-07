@@ -1,12 +1,12 @@
-// pages/information/information.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    choose1: 1,
-    choose2: 0,
+    winWidth: 0,
+    winHeight: 0,
+    currentTab: 0,
     infor: [{
       img: '/image/info/info1.png',
       title: '宾夕法尼亚大学陈一伟教授南科大讲堂分享新型阻变存储材料的研究',
@@ -40,56 +40,66 @@ Page({
    */
   onLoad: function(options) {
 
+    var that = this;
+
+    wx.getSystemInfo({
+
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+
+    });
+  },
+
+  /** 
+   * 滑动切换tab 
+   */
+  bindChange: function(e) {
+
+    var that = this;
+    that.setData({
+      currentTab: e.detail.current
+    });
+
   },
 
 
-  // 切换事件
-  seletcInfo: function() {
-    let that = this
-    // 获取在data中的数值
-    var choose = that.data.choose1
-    console.log('当前状态：', choose);
-    // 未选中时，为0
-    if (choose == 0) {
+  //  点击切换tab
+  swichNav: function(e) {
+    let that = this;
+
+    // 获取当前的current
+    var now = that.data.currentTab
+    console.log('当前的current:', now)
+    var current = e.currentTarget.dataset.current
+    console.log('点击的current：', current)
+
+    if (now != current) {
       that.setData({
-        choose1: 1,
-        choose2: 0
+        currentTab: current
       })
+    } else {
+      return false;
     }
-
   },
 
-  seletcNotice: function() {
-    let that = this
-    // 获取在data中的数值
-    var choose = that.data.choose2
-    console.log('当前状态：', choose);
-    // 为选中时，为0
-    if (choose == 0) {
-      that.setData({
-        choose1: 0,
-        choose2: 1
-      })
-    }
-
-
-
-  },
-
-  // 页面跳转
-  toInformation: function() {
-    let that = this
+  toInformation:function(){
     wx.navigateTo({
       url: '/pages/information/classinfo/classinfo',
     })
   },
 
-  toNotice: function() {
-    let that = this
+  toNotice:function(){
     wx.navigateTo({
       url: '/pages/information/notice/notice',
     })
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

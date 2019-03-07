@@ -1,102 +1,86 @@
-<view class='container'>
+<!-- 顶部切换栏 -->
+<view class='top-swiper-tab'>
 
-  <!-- 顶部切换栏 -->
-  <view class='top-switch-line row'>
-
-
-    <!-- 俩个切换钮有俩种样式状态 -->
-
-    <!-- 易班资讯 -->
-    <view class='inforbtn coun' bindtap='seletcInfo'>
-      <text class='befor' wx:if="{{choose1==0}}">易班资讯</text>
-      <text class='after' wx:if="{{choose1==1}}">易班资讯</text>
-      <view class='cpoint' wx:if="{{choose1==1}}"></view>
-    </view>
-
-    <view class='notice coun' bindtap='seletcNotice'>
-      <text class='befor' wx:if="{{choose2==0}}">通知公告</text>
-      <text class='after' wx:if="{{choose2==1}}">通知公告</text>
-      <view class='cpoint' wx:if="{{choose2==1}}"></view>
-    </view>
-
+  <view class='swiper-tab-list'>
+    <text class="list-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">易班资讯</text>
+    <view class="{{currentTab==0 ? 'cpoint' : ''}}"></view>
   </view>
 
-  <!-- 易班资讯 -->
-  <view class='coun' wx:if="{{choose1==1}}">
-
-    <block wx:for="{{infor}}" wx:key="list-id">
-    
-      <view class='info-list-item' data-id='' bindtap='toInformation'>
-
-        <!-- 话题图片 -->
-        <view class='p1'>
-          <image src='{{item.img}}'></image>
-        </view>
-
-        <!-- 话题信息 -->
-        <view class='topicinfo'>
-          <!-- 话题标题 -->
-          <view class='title'>{{item.title}}</view>
-
-          <view class='line'>
-            <!-- 阅读人数 -->
-            <view class='read'>
-              <image src='/image/icon/eye.png' class='icon1'></image>
-              <text class='f1'>{{item.reads}}</text>
-            </view>
-            <!-- 发布日期 -->
-            <view class='date'>
-              <image src='/image/icon/time.png' class='icon2'></image>
-              <text class='f1'>{{item.date}}</text>
-            </view>
-
-          </view>
-
-        </view>
-
-      </view>
-    </block>
-
+  <view class='swiper-tab-list'>
+    <text class="list-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">通知公告</text>
+    <view class="{{currentTab==1 ? 'cpoint' : ''}}"></view>
   </view>
-
-  <!-- 通知公告 -->
-  <view class='coun' wx:if="{{choose2==1}}">
-
-    <block wx:for="[0,1]" wx:key="list-id" >
-
-      <view class='notice-list-item' data-id='' bindtap="toNotice">
-
-        <view style='display:flex;flex-direction:row;margin-bottom:20rpx;'>
-          <view class='point'></view>
-          <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
-        </view>
-
-
-
-        <view class='row' style='justify-content:flex-end;'>
-
-          <view class='read'>
-            <image src='/image/icon/eye.png' class='icon1'></image>
-            <text class='f1'>45</text>
-          </view>
-
-          <view class='time'>
-            <image src='/image/icon/time.png' class='icon2'></image>
-            <text class='f1'>2018 01-1</text>
-          </view>
-
-        </view>
-
-
-      </view>
-    </block>
-
-
-
-
-
-
-  </view>
-
 
 </view>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="500" style="height:{{winHeight}}px" bindchange="bindChange">
+
+  <swiper-item>
+
+    <block wx:for="[0,1]" wx:key="list-id">
+
+      <view class='row classlist-item' bindtap='toInformation'>
+        <image src='/image/info/info1.png' class='p1'></image>
+        <view class='coun infobox'>
+          <view class='title'>宾夕法尼亚大学陈一伟教授南科大讲堂分享新型阻变存储材料的研究</view>
+          <view class='line'>
+
+            <!-- 阅读人数 -->
+            <view class='reads row'>
+              <image src='/image/icon/eye.png'></image>
+              <text>45</text>
+            </view>
+
+            <!-- 发布时间 -->
+            <view class='time row'>
+              <image src='/image/icon/time.png'></image>
+              <text>2018-1-01</text>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+
+    </block>
+
+
+
+  </swiper-item>
+
+  <swiper-item>
+    <view class='container'>
+
+      <block wx:for="[0,1]" wx:key="list-id">
+
+        <view class='noticelist-item' data-id=''bindtap="toNotice">
+
+          <view style='display:flex;flex-direction:row;margin-bottom:20rpx;'>
+            <view class='point'></view>
+            <view class='noticetitle'>机遇与挑战：世界一流理工科大学的文科建设高峰论 坛邀请函。</view>
+          </view>
+
+          <view class='row' style='justify-content:flex-end;'>
+
+            <view class='read'>
+              <image src='/image/icon/eye.png' class='icon1'></image>
+              <text class='f1'>45</text>
+            </view>
+
+            <view class='time'>
+              <image src='/image/icon/time.png' class='icon2'></image>
+              <text class='f1'>2018 01-1</text>
+            </view>
+
+          </view>
+
+        </view>
+      </block>
+
+
+    </view>
+
+
+  </swiper-item>
+
+</swiper>

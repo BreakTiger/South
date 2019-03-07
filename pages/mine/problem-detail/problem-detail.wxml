@@ -50,7 +50,7 @@
     <input placeholder='邮箱/手机号'></input>
   </view>
 
-  <button class='upBtn'>提交</button>
+  <button class='upBtn' bindtap='uppro'>提交</button>
 
 
 

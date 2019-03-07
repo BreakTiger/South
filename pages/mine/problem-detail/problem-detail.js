@@ -6,7 +6,7 @@ Page({
    */
   data: {
     current: 0,
-    max: 20,
+    max: 200,
     imglist: [],
     imgmax: 4
   },
@@ -42,6 +42,8 @@ Page({
     let that = this
     var imgbox = that.data.imglist;
 
+    
+
     wx.chooseImage({
       count: 4,
       sizeType: ['original', 'compressed'],
@@ -54,11 +56,9 @@ Page({
           imgbox = tempFilePaths
         } else if (4 > imgbox.length) {
           imgbox = imgbox.concat(tempFilePaths);
-        } else {
-          imgbox[picid] = tempFilePaths[0];
-        }
+        } 
         that.setData({
-          imglist: imgbox
+          imglist: imgbox.slice(0,4)
         });
 
       },
@@ -77,6 +77,13 @@ Page({
     list.splice(index,1)
     that.setData({
       imglist:list
+    })
+  },
+
+
+  uppro:function(){
+    wx.navigateTo({
+      url: '/pages/mine/results/results',
     })
   },
 

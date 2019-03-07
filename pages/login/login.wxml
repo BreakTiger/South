@@ -1,4 +1,4 @@
-<view class='content'>
+<view class='container'>
 
   <view class='logo-name'>
     <image src='/image/icon/unLogo.png' class='logo'></image>
