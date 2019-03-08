@@ -27,7 +27,7 @@ Page({
       nav: '就业管理'
     }, {
       icon: '/image/nav/icon5.png',
-      nav: '物业保修'
+      nav: '物业报修'
     }, {
       icon: '/image/nav/icon6.png',
       nav: '请假管理'

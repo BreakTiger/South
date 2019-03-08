@@ -22,6 +22,10 @@ Page({
     let that = this
     console.log(e);
     // 获取需要的数据
+
+    var encryptedData = e.detail.encryptedData
+
+    var userInfo = e.detail.userInfo
     
   },
 
