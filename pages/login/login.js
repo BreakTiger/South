@@ -1,4 +1,5 @@
 const app = getApp()
+import modals from '../../class/methods/modal.js'
 const request = require('../../class/api/htts.js')
 
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    key: '',
+    type: 2
   },
 
   /**
@@ -16,18 +18,79 @@ Page({
    */
   onLoad: function(options) {
 
+    let that = this
+    // 获取session_key
+    let codes = wx.getStorageSync('code')
+    console.log(codes)
+    let data = {
+      code: codes
+    }
+    let url = app.globalData.api + "/index.php/App/App/xcxOpenid"
+    request.sendRequest(url, 'post', data, {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then(function(res) {
+      console.log(res)
+      let skey = res.data.data
+      let status = res.data.status
+      if (status == 200) {
+        that.setData({
+          key: res.data.data
+        })
+      }
+    })
   },
 
+
+
+  // 用户确定授权
   confirm: function(e) {
     let that = this
-    console.log(e);
-    // 获取需要的数据
+    let keys = that.data.key;
+    console.log('key:', keys)
+    let type = that.data.type
+    console.log('type:', type);
+    let encryptedData = e.detail.encryptedData
+    let iv = e.detail.iv
+    console.log('encryptedData:', encryptedData);
+    console.log('iv:', iv);
+    let data = {
+      type: type,
+      session_key: keys,
+      encryptedData: encryptedData,
+      iv: iv
+    }
+    let url = app.globalData.api + '/index.php/App/App/login'
 
-    var encryptedData = e.detail.encryptedData
+    request.sendRequest(url, 'post', data, {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then(function(res) {
+      console.log(res)
+      let status = res.data.status
+      if (status==200){
+        let token = res.data.data.token
+        console.log('token:', token);
+        // 设置为缓存
+        wx.setStorageSync('token', token);
 
-    var userInfo = e.detail.userInfo
-    
+        wx.reLaunch({
+          url: '/pages/index/index',
+        })
+      }
+    })
+
+
+
+
+
+
+
+
   },
+
+
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

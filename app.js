@@ -14,6 +14,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -36,12 +37,10 @@ App({
     })
   },
   globalData: {
-    api:'http://nankeda.heifeng.xin/',
+    api:'http://nankeda.heifeng.xin',
     openid:'',
-    addText:'',
-    endText:'',
-    userInfo: null,
-    status1:null,
-    status2:null
+    addText:'玩命加载中...',
+    endText:'————— 我也是有底线的 —————',
+    userInfo: null
   }
 })
