@@ -1,7 +1,7 @@
 import modals from '../../class/methods/modal.js'
 const request = require('../../class/api/htts.js')
-
 var app = getApp()
+
 
 Page({
 
@@ -42,6 +42,14 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+
+
+    let token = wx.getStorageSync('token')
+    console.log(token);
+
+  
+
+
 
 
 
