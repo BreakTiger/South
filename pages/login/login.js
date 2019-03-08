@@ -73,15 +73,15 @@ Page({
         console.log('token:', token);
         // 设置为缓存
         wx.setStorageSync('token', token);
-
-
-        that.location();
-        // wx.reLaunch({
-        //   url: '/pages/index/index',
-        // })
+        // that.location();
+        wx.reLaunch({
+          url: '/pages/index/index',
+        })
       }
     })
   },
+
+  
 
   // 定位方法
   location: function() {
@@ -93,16 +93,12 @@ Page({
       content: '需要获取您的地理位置，请确认授权',
       success: function(res) {
         if (res.confirm) {
-
           // console.log('1111');
-
           wx.getLocation({
             success: function(res) {
               console.log(res)
             },
           })
-
-
         } else if (res.cancel) {
           console.log('2222');
         }
@@ -131,10 +127,10 @@ Page({
     console.log('token:', token);
     // 不为空时：
     if (token != '') {
-      that.location();
-      // wx.reLaunch({
-      //   url: '/pages/index/index',
-      // })
+      // that.location();
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
     }
   },
 
