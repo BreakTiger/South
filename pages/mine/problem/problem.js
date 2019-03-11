@@ -1,21 +1,14 @@
-// pages/mine/problem/problem.js
+import modal from '../../../class/methods/modal.js'
+const request = require('../../../class/api/htts.js')
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    prolist: [
-      '无法打开小程序',
-      '小程序闪退',
-      '卡顿',
-      '黑屏白屏',
-      '死机',
-      '界面错位',
-      '界面加载慢',
-      '其他异常',
-      '意见与建议'
-    ]
+    prolist: []
 
   },
 
@@ -23,14 +16,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-  },
-
-  toUpproblem: function() {
-    wx.navigateTo({
-      url: '/pages/mine/problem-detail/problem-detail',
+    let that = this
+    // 获取token
+    let token = wx.getStorageSync('token')
+    // console.log(token);
+    let data = {}
+    let url = app.globalData.api + '/index.php/App/User/feedback_type'
+    modal.loading();
+    request.sendRequest(url, 'post', data, {
+      "token": token
+    }).then(function(res) {
+      modal.loaded();
+      //  console.log(res);
+      let status = res.data.status
+      let list = res.data.data
+      // console.log(list);
+      if (status == 200) {
+        that.setData({
+          prolist: list
+        })
+      }
     })
   },
+
+  // 带参跳转
+  toUpproblem: function(e) {
+    let that = this
+    let id = e.currentTarget.dataset.id
+    let url = '/pages/mine/problem-detail/problem-detail?id='
+    modal.navigate(url,id)
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

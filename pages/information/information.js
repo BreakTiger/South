@@ -1,10 +1,14 @@
+import modals from '../../class/methods/modal.js'
+const request = require('../../class/api/htts.js')
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 1,
+    currentTab: 0,
     winHeight: ''
   },
 
@@ -12,13 +16,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+
+    that.classinfo()
 
   },
+
+  // 易班资讯
+  classinfo: function() {
+    let that = this
+    let token = wx.getStorageSync('token')
+    let data = {}
+
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanInfolist'
+
+    request.sendRequest(url, 'post', data, {
+      'token': token
+    }).then(function(res) {
+      console.log(res)
+    })
+  },
+
+
+
 
   // 点击切换
   selectType: function(e) {
     let that = this
-    console.log(e);
+    // console.log(e);
     // 获取点击的type的current
     var s_current = e.currentTarget.dataset.current
     // console.log('点击的:', s_current);
@@ -28,10 +53,13 @@ Page({
 
     if (n_current == s_current) {
       return false;
-    } else {
+    } else { //切换
       that.setData({
         currentTab: s_current
       })
+      console.log('切换后的tab为：',that.data.currentTab)
+      // 判断TAB，调用对应的接口
+
     }
 
   },

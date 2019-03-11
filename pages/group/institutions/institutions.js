@@ -1,4 +1,7 @@
-// pages/group/institutions/institutions.js
+import modals from '../../../class/methods/modal.js'
+const request = require('../../../class/api/htts.js')
+var app = getApp()
+
 Page({
 
   /**

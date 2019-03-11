@@ -2,17 +2,13 @@ import modals from '../../class/methods/modal.js'
 const request = require('../../class/api/htts.js')
 var app = getApp()
 
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    lunbo: [
-      '/image/banner/banner1.png',
-      '/image/banner/banner2.png',
-    ],
+    lunbo: [],
     navlist: [{
       icon: '/image/nav/icon1.png',
       nav: '综合测评'
@@ -34,7 +30,8 @@ Page({
     }, {
       icon: '/image/nav/icon7.png',
       nav: '选课'
-    }]
+    }],
+    notice: []
   },
 
   /**
@@ -43,40 +40,55 @@ Page({
   onLoad: function(options) {
     let that = this
 
-
     let token = wx.getStorageSync('token')
-    console.log(token);
-
-  
-
-
-
-
-
-
-
+    console.log('token:', token);
+    let data = {}
+    let url = app.globalData.api + '/index.php/app/banner/banner'
+    modals.loading()
+    request.sendRequest(url, 'post', data, {
+      "token": token
+    }).then(function(res) {
+      modals.loaded()
+      console.log(res)
+      let status = res.data.status
+      if (status == 200) {
+        that.setData({
+          lunbo: res.data.data
+        })
+        that.announcements()
+      }
+    })
   },
 
-  // 轮播接口
-  lunbo:function(){
+  // 通知公告
+  announcements: function() {
     let that = this
-    
+    let token = wx.getStorageSync('token')
+    let data = {}
+    let url = app.globalData.api + '/index.php/app/information/messagePush'
+    request.sendRequest(url, 'post', data, {
+      'token': token
+    }).then(function(res) {
+      // console.log(res)
+      let notice = res.data.data
+      let status = res.data.status
+      if (status == 200) {
+        that.setData({
+          notice: notice
+        })
+      }
+    })
   },
-
-  // switchNotice: function() {
-  //   let that = that
-  //   wx.switchTab({
-  //     url: '/pages/information/information',
-  //   })
-  // },
 
 
   // 进入通知详情
-  toNotice: function() {
-    wx.navigateTo({
-      url: '/pages/information/notice/notice',
-    })
+  toNotice: function(e) {
+    let mid = e.currentTarget.dataset.id
+    let url = '/pages/information/notice/notice?mid=';
+    modals.navigate(url,mid);
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -89,6 +101,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // 判断用户是否登陆过
+
+    // 没登陆则缓存中不存在token
+
+    if (!wx.getStorageSync('token')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
 
   },
 

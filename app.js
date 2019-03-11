@@ -1,4 +1,3 @@
-//app.js
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -37,11 +36,11 @@ App({
     })
   },
   globalData: {
-    api:'http://nankeda.heifeng.xin',
-    openid:'',
-    token:'',
-    addText:'玩命加载中...',
-    endText:'————— 我也是有底线的 —————',
+    api: 'https://nankeda.heifeng.xin',
+    openid: '',
+    token: '',
+    addText: '玩命加载中...',
+    endText: '————— 我也是有底线的 —————',
     userInfo: null
   }
 })

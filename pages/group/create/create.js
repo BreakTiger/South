@@ -1,17 +1,36 @@
-// pages/group/create/create.js
+import modals from '../../../class/methods/modal.js'
+const request = require('../../../class/api/htts.js')
+var app = getApp()
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    groupList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+
+    // 获取token
+    let token = wx.getStorageSync('token')
+
+    let data = {}
+
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanAddGroup'
+
+    request.sendRequest(url,'post',data,{
+      'token':token
+    }).then(function(res){
+      console.log(res);
+    })
+
 
   },
 
@@ -21,7 +40,7 @@ Page({
       url: '/pages/group/topic/topic',
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

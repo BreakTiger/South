@@ -1,25 +1,35 @@
-// pages/mine/mine.js
+import modal from '../../class/methods/modal.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+    // 获取用户信息
+    modal.loading();
+    let user = wx.getStorageSync('userinfo');
+    console.log('user:', user);
+    that.setData({
+      user: user
+    })
+    modal.loaded();
 
   },
 
 
+  // 反馈跳转
   toproblem: function() {
-    wx.navigateTo({
-      url: '/pages/mine/problem/problem',
-    })
+    let url = '/pages/mine/problem/problem';
+    modal.navigate(url);
   },
 
   /**

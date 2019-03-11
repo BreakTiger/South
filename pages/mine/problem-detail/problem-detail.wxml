@@ -39,18 +39,17 @@
 
   </view>
 
-
-
-
-
   <view class='line'>请输入有效的联系方式，以便开发者l联系你（选填）</view>
 
   <view class='input-line row'>
     <text>联系方式：</text>
-    <input placeholder='邮箱/手机号'></input>
+    <input placeholder='邮箱/手机号' bindinput='forContact' value='{{value}}'></input>
   </view>
 
-  <button class='upBtn' bindtap='uppro'>提交</button>
+
+
+
+  <button class='upBtn' bindtap='upper'>提交</button>
 
 
 

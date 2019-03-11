@@ -1,4 +1,7 @@
-// pages/group/join/join.js
+import modals from '../../../class/methods/modal.js'
+const request = require('../../../class/api/htts.js')
+var app = getApp()
+
 Page({
 
   /**
@@ -12,6 +15,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+    let token = wx.getStorageSync('token')
+    let data = {}
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanAddGroup'
+    request.sendRequest(url, 'post', data, {
+      'token': token
+    }).then(function(res){
+      console.log(res);
+    })
 
   },
 

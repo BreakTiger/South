@@ -3,8 +3,8 @@
 <view class='topbox'>
   <image src='/image/icon/bk.png' class='bk'></image>
   <view class='user'>
-    <image src='/image/icon/header.png' class='header'></image>
-    <view class='username'>广广西</view>
+    <image src='{{user.avatarUrl}}' class='header'></image>
+    <view class='username'>{{user.nickName}}</view>
   </view>
 </view>
 

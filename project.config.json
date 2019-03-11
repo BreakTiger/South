@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -38,7 +38,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "pages/information/notice/notice",
+					"query": "mid=129",
+					"scene": null
+				}
+			]
 		}
 	}
 }
