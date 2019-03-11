@@ -42,6 +42,7 @@ Page({
   // 通知公告
   noticeinfo: function() {
     let that = this
+    
   },
 
 

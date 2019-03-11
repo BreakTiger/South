@@ -101,94 +101,44 @@ Page({
   },
 
 
-  // 提交
+  // 提交 -上传图片
   upper: function() {
     let that = this
-
-    let val = that.data.inpuVal
-    console.log('输入的内容：', val);
+  
     let imglist = that.data.imglist
-    console.log('图片组:', imglist);
-    let contact = that.data.contact
-    console.log('联系方式:', contact);
-
-    // 创建正则
-    // 1.手机号码
-    var test1 = /^1(3|4|5|7|8)\d{9}$/;
-    // 2.邮箱验证
-    var test2 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-
-
-    // 判断
-
-    // 输入内容必填
-
-    // 图片组选填，可为空
-
-    // 联系方式选填，但填写的情况下必须做正则判断，（验证方式有俩种，一种为手机号码，一种则为邮箱）
-
-    //然后上述条件都满足时，点击提交先执行上传的方法，将图片上传，再执行提交的方法，将其他信息提交上去，成功时跳转到结果页面
-
-
-    // 输入内容
-    if (val == '') {
-      wx.showToast({
-        title: '请您填写你的意见与建议',
-      })
-    }
+    console.log('图片组:', imglist);   
 
     // 图片不为空时候,使用遍历和上传的api将图片上传
     if (imglist.length != 0) {
-
       let token = wx.getStorageSync('token')
-      
-      console.log('2222')
-      
       for (var i = 0; i < imglist.length; i++) {
-        // console.log(imglist[i]);
         let item = imglist[i];
-        let data = {
-          file: item
-        }
-        let url = app.globalData.api +'/index.php/App/Tool/uploadPic'
-        
+        let url = app.globalData.api + '/index.php/App/Tool/uploadPic'
+        wx.uploadFile({
+          url: url,
+          filePath: item,
+          name: 'file',
+          header: {
+            "token": token
+          },
+          success: function(res) {
+            console.log(res)
+            let status = JSON.parse(res.data)
+            console.log(status)
+            if(status==200){
+              // that.upperinfo()
+            }
+          }
+        })
+
       }
 
     }
 
-    // if (contact != '') {
-
-    //   console.log('222')
-
-    //   if (!test1.test(contact)) {
-    //     wx.showToast({
-    //       title: '请填写正确的手机号码',
-    //     })
-
-    //   } else if (!test2.test(contact)) {
-    //     wx.showToast({
-    //       title: '请填写合法的邮箱地址',
-    //     })
-    //   }
-
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // wx.navigateTo({
-    //   url: '/pages/mine/results/results',
-    // })
   },
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
