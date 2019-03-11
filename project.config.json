@@ -38,15 +38,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "2",
-					"pathName": "pages/information/notice/notice",
-					"query": "mid=129",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }

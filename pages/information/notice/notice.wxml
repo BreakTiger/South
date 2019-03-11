@@ -1,3 +1,4 @@
+<import src="../../../wxParse/wxParse.wxml" />
 <view class='container'>
 
   <view class='title'>{{information.title}}</view>
@@ -7,7 +8,16 @@
     <text class='reads'>阅读量 {{information.number}}</text>
   </view>
 
-  <view class='m1'>根据我校《南方科技大学关于2018年度研究生国家奖学金评选的通知》要求，学院制定《2018年南方科技大学工学院研究生国家奖学金评审细则》，由哈工大联培研究生个人申请、院系初审、工学院研究生工作委员会评选等程序，共推荐国家奖学金6人，其中博士3人、硕士3人。现将推荐人员名单予以公示，公示时间自2018年11月7日至2017年11月13日。公示期内，如有异议可向工学院研究生工作委员会反映。具体名单如下：</view>
+  <view class='inforContent'>
+
+    <!-- 这一块是富文本 显示的内容区 -->
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+
+  </view>
+
+
+
+  <!-- <view class='m1'>根据我校《南方科技大学关于2018年度研究生国家奖学金评选的通知》要求，学院制定《2018年南方科技大学工学院研究生国家奖学金评审细则》，由哈工大联培研究生个人申请、院系初审、工学院研究生工作委员会评选等程序，共推荐国家奖学金6人，其中博士3人、硕士3人。现将推荐人员名单予以公示，公示时间自2018年11月7日至2017年11月13日。公示期内，如有异议可向工学院研究生工作委员会反映。具体名单如下：</view>
 
   <view class='tablettile'>2018年度博士国家奖学金评选人选</view>
 
@@ -87,7 +97,7 @@
   <view class=' l-line'>
     <view>工学院研究生工作委员会</view>
     <view>2018年11月7日</view>
-  </view>
+  </view> -->
 
 
 </view>

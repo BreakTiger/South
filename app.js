@@ -37,8 +37,6 @@ App({
   },
   globalData: {
     api: 'https://nankeda.heifeng.xin',
-    openid: '',
-    token: '',
     addText: '玩命加载中...',
     endText: '————— 我也是有底线的 —————',
     userInfo: null

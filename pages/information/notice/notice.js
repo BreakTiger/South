@@ -1,5 +1,6 @@
 import modals from '../../../class/methods/modal.js'
 const request = require('../../../class/api/htts.js')
+const WxParse = require('../../../wxParse/wxParse.js')
 const app = getApp()
 
 
@@ -35,6 +36,11 @@ Page({
         that.setData({
           information:res.data.data
         })
+
+        let article = res.data.data.message
+
+        WxParse.wxParse('article', 'html', article, that, 5);
+        
       }
     })
 

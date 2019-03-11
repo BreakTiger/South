@@ -1,3 +1,5 @@
+@import '../../../wxParse/wxParse.wxss';
+
 .title {
   width: 688rpx;
   font-size: 44rpx;
@@ -16,7 +18,14 @@
   color: #999;
 }
 
-.m1 {
+.inforContent{
+  width: 652rpx;
+  font-size: 36rpx;
+  color: #444;
+  margin-top: 55rpx;
+}
+
+/* .m1 {
   width: 652rpx;
   font-size: 36rpx;
   color: #444;
@@ -76,4 +85,4 @@
 
 .reads{
   margin-left: 35rpx;
-}
+} */

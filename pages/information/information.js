@@ -25,6 +25,8 @@ Page({
   // 易班资讯
   classinfo: function() {
     let that = this
+
+    console.log('易班资讯');
     let token = wx.getStorageSync('token')
     let data = {}
 
@@ -35,6 +37,11 @@ Page({
     }).then(function(res) {
       console.log(res)
     })
+  },
+
+  // 通知公告
+  noticeinfo: function() {
+    let that = this
   },
 
 
@@ -57,8 +64,12 @@ Page({
       that.setData({
         currentTab: s_current
       })
-      console.log('切换后的tab为：',that.data.currentTab)
+      console.log('切换后的tab为：', that.data.currentTab)
+      let tab = that.data.currentTab
       // 判断TAB，调用对应的接口
+      // if(){
+      //   classinfo
+      // }
 
     }
 
@@ -69,9 +80,11 @@ Page({
     let that = this
     // 获取滑块current
     var current = e.detail.current
+    console.log('滑块current:', current);
     that.setData({
       currentTab: current
     })
+
   },
 
   toClass: function() {
@@ -99,7 +112,7 @@ Page({
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
         var calc = clientHeight * rpxR - 180;
-        console.log(calc)
+        // console.log(calc)
         that.setData({
           winHeight: calc
         })
