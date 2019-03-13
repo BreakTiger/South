@@ -18,6 +18,11 @@
   color: #999;
 }
 
+
+.reads{
+  margin-left: 20rpx;
+}
+
 .inforContent{
   width: 652rpx;
   font-size: 36rpx;

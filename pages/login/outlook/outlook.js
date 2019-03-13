@@ -1,15 +1,11 @@
-import modals from '../../../class/methods/modal.js'
-const request = require('../../../class/api/htts.js')
-var app = getApp()
-
-
+// pages/login/outlook/outlook.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    groupList: []
+    url: ''
   },
 
   /**
@@ -17,39 +13,36 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+
     let session_key = wx.getStorageSync('session_key')
-    let data = {
-      session_key: session_key
-    }
-    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanCreateGroup'
-    modals.loading()
-    request.sendRequest(url, 'post', data,{
-      "Content-Type": "application/x-www-form-urlencoded"
-    }).then(function(res) {
-      modals.loaded()
-      console.log(res)
-      let status = res.data.status
-      if(status==200){
-        let group = res.data.data.info.group
-        that.setData({
-          groupList: group
-        })
-      }
+    console.log('session_key:', session_key);
+    let url = 'https://nankeda.heifeng.xin/index.php/app/nkdyiban/yibanlogin?session_key=' + session_key;
+    console.log('url:', url);
+    that.setData({
+      url: url,
+    })
+
+  },
+
+  togetData: function(e) {
+    let that = this
+    console.log('从网页中获取的信息：');
+    console.log(e);
+
+    wx.reLaunch({
+      url: '/pages/index/index',
     })
   },
 
-  // 带参跳转
-  toTopic: function() {
-    wx.navigateTo({
-      url: '/pages/group/topic/topic',
-    })
-  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    // wx.navigateBack({
+    //   url: '/pages/login/login'
+    // })
   },
 
   /**
@@ -63,6 +56,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    togetData
 
   },
 
@@ -70,7 +64,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
+    let that = this
 
+    that.togetData()
   },
 
   /**

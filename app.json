@@ -15,7 +15,8 @@
     "pages/mine/results/results",
     "pages/information/classinfo/classinfo",
     "pages/information/notice/notice",
-    "pages/login/person/person"
+    "pages/login/person/person",
+    "pages/login/outlook/outlook"
   ],
   "window": {
     "backgroundTextStyle": "light",

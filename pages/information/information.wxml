@@ -14,55 +14,97 @@
 
 </view>
 
+<!-- 内容盒子 -->
 
-<!-- 主体内容 -->
-<swiper class='tab-content' current="{{currentTab}}" duration='500' bindchange="sChange" style='height:{{winHeight}}rpx'>
 
-  <swiper-item class="box1">
-    <view class='list-box' wx:for="[0,1]" wx:key="list-id">
+<swiper class='content' current='{{currentTab}}' duration="500" bindchange='sChange'>
 
-      <view class='list-item row' bindtap='toClass'>
-        <image src='/image/info/info1.png'></image>
-        <view class='info-box'>
-          <view class='class-title'>宾夕法尼亚大学陈一伟教授南科大讲堂分享新型阻变存储材料的研究</view>
+  <swiper-item>
 
-          <view class='class-line'>
-            <view class='reads row'>
-              <image src='/image/icon/eye.png'></image>
-              <text>45</text>
+    <scroll-view scroll-y style='height:100%;'>
+
+      <block wx:for="{{classlist}}" wx:key="list-id" wx:for-index="idx">
+
+        <view class='list-box'>
+
+          <view class='list-item' data-src='{{item.push_href}}' bindtap='toClass'>
+
+            <image src='{{item.push_pic}}' class='pic'></image>
+
+            <view class='title-read-time'>
+
+              <view class='title'>{{item.push_title}}</view>
+
+              <view class='read-time'>
+
+                <view class='read row'>
+                  <image src='/image/icon/eye.png'></image>
+                  <text class='f1'>{{item.number}}</text>
+                </view>
+
+                <view class='time row'>
+                  <image src='/image/icon/time.png'></image>
+                  <text class='f1'>{{item.create_time}}</text>
+                </view>
+
+              </view>
+
             </view>
-            <view class='time row'>
-              <image src='/image/icon/time.png'></image>
-              <text>2018 1-01</text>
-            </view>
+
           </view>
 
         </view>
 
-      </view>
+      </block>
 
-    </view>
+    </scroll-view>
+
   </swiper-item>
 
   <swiper-item>
-    <view class='list-box' wx:for="[0,1]" wx:key="list-id">
-      <view class='notice-item' bindtap='toNotice'>
-        <view class='point'></view>
-        <view class='notice-box'>
-          <view class='notice-title'>机遇与挑战：世界一流理工科大学的文科建设高峰论坛邀请函。</view>
-          <view class='class-line'>
-            <view class='reads row'>
-              <image src='/image/icon/eye.png'></image>
-              <text>45</text>
+
+    <scroll-view scroll-y style='height:100%;'>
+
+      <block wx:for="{{noticelist}}" wx:key="list-id">
+
+        <view class='list-box' data-id='{{item.message_id}}' bindtap='toNotice'>
+
+          <view class='notice-list-item'>
+
+            <view class='point-titel'>
+
+              <view class='point'></view>
+
+              <view class='titel'>{{item.title}}</view>
+
             </view>
-            <view class='time row'>
-              <image src='/image/icon/time.png'></image>
-              <text>2018 1-01</text>
+
+            <view class='read-time' style='margin-bottom: 10rpx;'>
+
+              <view class='read row'>
+                <image src='/image/icon/eye.png'></image>
+                <text class='f1'>{{item.number}}</text>
+              </view>
+
+              <view class='time row'>
+                <image src='/image/icon/time.png'></image>
+                <text class='f1'>{{item.send_time}}</text>
+              </view>
+
             </view>
+
+
+
           </view>
+
         </view>
-      </view>
-    </view>
+
+      </block>
+
+
+
+    </scroll-view>
+
   </swiper-item>
 
 </swiper>

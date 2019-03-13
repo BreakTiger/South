@@ -33,9 +33,11 @@ Page({
       console.log(res);
       let status = res.data.status
       if (status == 200) {
+        let key = res.data.data
         that.setData({
-          key: res.data.data
+          key: key
         })
+        wx.setStorageSync('session_key', key);
       }
     })
   },
@@ -44,11 +46,15 @@ Page({
   // 用户确定授权
   confirm: function(e) {
     let that = this
+
     let keys = that.data.key;
     console.log('key:', keys)
+
     let type = that.data.type
     console.log('type:', type);
+
     console.log(e);
+
     let encryptedData = e.detail.encryptedData
     let iv = e.detail.iv
     console.log('encryptedData:', encryptedData);
@@ -77,9 +83,16 @@ Page({
         // console.log('token:', token);
         // 设置为缓存
         wx.setStorageSync('token', token);
-        wx.reLaunch({
-          url: '/pages/index/index',
+
+        // wx.redirectTo({
+        //   url: '/pages/login/outlook/outlook',
+        // })
+
+
+        wx.navigateTo({
+          url: '/pages/login/outlook/outlook'
         })
+       
       } else if (status == 201) {
         modals.showToast('系统繁忙，请稍后重试',none);
       }
@@ -99,6 +112,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
 
   },
 

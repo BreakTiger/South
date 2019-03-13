@@ -37,6 +37,7 @@ Page({
     // 获取输入的内容
     var value = e.detail.value;
     console.log(value);
+
     // 计算输入内容的长度
     var length = parseInt(value.length);
     console.log(length);
@@ -101,16 +102,21 @@ Page({
   },
 
 
-  // 提交 -上传图片
+  // 提交
   upper: function() {
     let that = this
-  
+    
+
     let imglist = that.data.imglist
-    console.log('图片组:', imglist);   
+    console.log('图片组:', imglist);
 
     // 图片不为空时候,使用遍历和上传的api将图片上传
     if (imglist.length != 0) {
+
+      console.log('图片不为空')
+
       let token = wx.getStorageSync('token')
+
       for (var i = 0; i < imglist.length; i++) {
         let item = imglist[i];
         let url = app.globalData.api + '/index.php/App/Tool/uploadPic'
@@ -122,22 +128,85 @@ Page({
             "token": token
           },
           success: function(res) {
-            console.log(res)
-            let status = JSON.parse(res.data)
-            console.log(status)
-            if(status==200){
-              // that.upperinfo()
+            // console.log(res)
+            let data = JSON.parse(res.data)
+
+            console.log(data)
+            let status = data.status
+            if (status == 200) {
+              that.upperinfo()
             }
           }
         })
 
       }
 
+    } else {
+      console.log('图片为空')
+      that.upperinfo()
     }
+
+
 
   },
 
+  upperinfo: function() {
+    let that = this
 
+    let token = wx.getStorageSync('token')
+    console.log('token:', token)
+
+    let imglist = that.data.imglist
+    console.log('图片组2：', imglist)
+
+    let inputVal = that.data.inpuVal
+    console.log('输入的内容', inputVal)
+
+    let typeid = that.data.typeid
+    console.log('id:', typeid);
+
+    let contact = that.data.contact
+    console.log('联系方式：', contact)
+
+    // 判断联系方式是否存在，且存在的情况下是否合法
+
+    if (contact != '') {
+      var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+      if (!myreg.test(contact)) {
+        wx.showToast({
+          title: '您输入的手机号码有误',
+          icon: 'none'
+        })
+        let data = {
+          telephone: contact,
+          content: inputVal,
+          image: imglist,
+          type: typeid
+        }
+        let url = app.globalData.api + '/index.php/App/User/feedback';
+        console.log('存在联系方式');
+        request.sendRequest(url, 'post', data, {
+          'token': token
+        }).then(function (res) {
+          console.log(res);
+        })
+      }
+    }else{
+      let data = {
+        telephone: contact,
+        content: inputVal,
+        image: imglist,
+        type: typeid
+      }
+      let url = app.globalData.api + '/index.php/App/User/feedback';
+      console.log('不存在联系方式')
+      request.sendRequest(url, 'post', data, {
+        'token': token
+      }).then(function (res) {
+        console.log(res);
+      })
+    }
+  },
 
 
   /**
