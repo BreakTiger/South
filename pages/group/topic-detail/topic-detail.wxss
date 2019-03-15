@@ -1,4 +1,4 @@
-
+@import '../../../wxParse/wxParse.wxss';
 
 .uppart {
   width: 680rpx;
@@ -22,7 +22,7 @@
   color: #999;
 }
 
-.reads{
+.reads {
   margin-left: 35rpx;
 }
 
@@ -117,14 +117,13 @@
 
 .reply-item {
   width: 530rpx;
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
 }
-
-
 
 .reply-item-info {
   font-size: 28rpx;
+  color: #555;
 }
 
 .reply {
@@ -137,7 +136,7 @@
 .count {
   font-size: 28rpx;
   color: #f08d01;
-  margin-left: 25rpx;
+  margin-left: 5rpx;
 }
 
 .right-info {
@@ -157,15 +156,44 @@
   color: #666;
 }
 
-.m1{
- width: 652rpx;
- font-size: 36rpx;
- color: #444;
- margin-top: 50rpx;
+.window {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
 }
 
-.p1{
-  width: 654rpx;
-  height: 255rpx;
-  margin-top: 40rpx;
+.input-line {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  padding: 15rpx 0;
+  z-index: 120;
+}
+
+.input-line input {
+  width: 590rpx;
+  border: 1rpx solid #000;
+  border-radius: 10rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  font-size: 30rpx;
+  text-indent: 10rpx;
+}
+
+.sndBtn {
+  width: 115rpx;
+  height: 50rpx;
+  text-align: center;
+  color: #fff;
+  background: #f08d01;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  padding-top: 8rpx;
 }

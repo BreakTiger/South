@@ -8,68 +8,89 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    grouplist: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    let that = this
+    let session_key = wx.getStorageSync('session_key')
+    let data = {
+      session_key: session_key
+    }
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanAddOrgan';
+    modals.loading()
+    request.sendRequest(url, 'post', data, {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then(function(res) {
+      modals.loaded()
+      console.log(res)
+      let status = res.data.status
+      if (status == 200) {
+        let list = res.data.data.info.organ_group
+        that.setData({
+          grouplist: list
+        })
+      }
+
+    })
 
   },
 
-  toTopic:function(){
-    wx.navigateTo({
-      url: '/pages/group/topic/topic',
-    })
+  toTopic: function(e) {
+    let id = e.currentTarget.dataset.id
+    let url = '/pages/group/topic/topic?id='
+    modals.navigate(url, id);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

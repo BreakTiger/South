@@ -39,10 +39,10 @@ Page({
   },
 
   // 带参跳转
-  toTopic: function() {
-    wx.navigateTo({
-      url: '/pages/group/topic/topic',
-    })
+  toTopic: function(e) {
+    let id = e.currentTarget.dataset.id
+    let url = '/pages/group/topic/topic?id='
+    modals.navigate(url, id);
   },
 
   /**

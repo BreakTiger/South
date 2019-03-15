@@ -5,7 +5,7 @@
   <view class='classlist'>
 
     <block wx:for="{{groupList}}" wx:key="list-id">
-      <view class='list-item' bindtap='toTopic'>
+      <view class='list-item' data-id='{{item.group_id}}' bindtap='toTopic'>
         <!-- 群组头像 -->
         <view class='header'>
           <image src='{{item.group_icon}}'></image>

@@ -9,7 +9,7 @@
 
       <swiper-item data-index="{{index}}">
 
-        <image src='{{item}}'></image>
+        <image src='{{item.ad_code}}' data-src="{{item.ad_link}}" bindtap='toImage'></image>
 
       </swiper-item>
 
@@ -25,7 +25,7 @@
   <!-- 导航容器 -->
   <view class='navbox'>
     <block wx:for="{{navlist}}" wx:key="list-id">
-      <view class='logobox' bindtap='selectKinds'>
+      <view class='logobox' bindtap='selectKinds' data-src='{{item.src}}'>
         <view class='logo'>
           <image src='{{item.icon}}'></image>
         </view>

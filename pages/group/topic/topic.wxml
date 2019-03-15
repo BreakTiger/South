@@ -1,35 +1,37 @@
 <!-- 群话题 -->
 
 
-<block wx:for="[0,1]" wx:key="list-id">
+<block wx:for="{{topiclist}}" wx:key="list-id">
 
-  <view class='list-item' bindtap='toTopic'>
+  <view class='list-item' data-id='{{item.topic_id}}' bindtap='toTopic'>
 
     <!-- 话题图片 -->
     <view class='p1'>
-      <image src='/image/icon/img1.png'></image>
+      <image src=''></image>
     </view>
 
     <!-- 话题信息 -->
     <view class='topicinfo'>
       <!-- 话题标题 -->
-      <view class='title'>校园内外新鲜事，易月精彩尽可知！</view>
+      <view class='title'>{{item.topic_title}}</view>
 
       <view class='line'>
         <!-- 阅读人数 -->
         <view class='read'>
           <image src='/image/icon/eye.png' class='icon1'></image>
-          <text class='f1'>45</text>
+          <text class='f1'>{{item.reply_count}}</text>
         </view>
         <!-- 发布日期 -->
         <view class='date'>
           <image src='/image/icon/time.png' class='icon2'></image>
-          <text class='f1'>2018-12-1</text>
+          <text class='f1'>{{item.create_time}}</text>
         </view>
 
       </view>
 
     </view>
   </view>
+
+  
 
 </block>

@@ -1,17 +1,17 @@
 <!-- 加入的公共群 -->
 
 <view class='pages'>
-  <view class='classlist' wx:for="[0,1]" wx:key='list-id'>
-    <view class='list-item' bindtap='toTopic'>
+  <view class='classlist' wx:for="{{grouplist}}" wx:key='list-id'>
+    <view class='list-item' bindtap='toTopic' data-id='{{item.group_id}}'>
       <!-- 群组头像 -->
       <view class='header'>
-        <image src='/image/icon/join2.png'></image>
+        <image src='{{item.group_icon}}'></image>
       </view>
       <!-- 群组描述 -->
       <view class='info'>
-        <text class='classname'>易班</text>
-        <text class='classinfo'>群主：南方科技大学</text>
-        <text class='classinfo'>成员：12785人</text>
+        <text class='classname'>{{item.group_name}}</text>
+        <text class='classinfo'>群主：{{item.adm_nick}}</text>
+        <text class='classinfo'>成员：{{item.group_mamber}}人</text>
       </view>
     </view>
   </view>
