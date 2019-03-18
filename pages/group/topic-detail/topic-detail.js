@@ -43,16 +43,16 @@ Page({
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
       modal.loaded()
-      console.log(res)
+      // console.log(res)
       let status = res.data.status
       if (status == 200) {
         let info = res.data.data.info
-        console.log(info)
+        // console.log(info)
         that.setData({
-          infolist: info
+          infolist: info 
         })
         let article = res.data.data.info.topic_content
-        WxParse.wxParse('article', 'html', article, that, 5);
+        WxParse.wxParse('article', 'html', article, that, 5); //富文本解析
         that.comments();
       }
 
@@ -76,7 +76,7 @@ Page({
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
       modal.loaded()
-      console.log(res)
+      // console.log(res)
       let status = res.data.status
       if (status == 200) {
         let list = res.data.data.info.list
