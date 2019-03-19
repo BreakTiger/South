@@ -44,37 +44,64 @@
             <view class='info'>{{item.comment_content}}</view>
           </view>
 
-          <!-- 回复评论 -->
-
+          <!-- 回复评论 一下分为四种情况-->
 
           <!-- 一条评论 -->
+          <view class='reply' wx:if="{{item.reply_list.length==1&&showMore==0}}">
+            <text class="count" bindtap='showMore'>共有{{item.reply_list.length}}条回复></text>
+          </view>
 
 
           <!-- 俩条评论 -->
+          <view class='replys' wx:if="{{item.reply_list.length==2&&showMore==0}}">
+            <view class='reply-item'>
+              <text class="count">{{item.reply_list[0].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
+              <text class='reply-item-info'>{{item.reply_list[0].comment_content[2]}}</text>
+            </view>
+            <view class='reply-item'>
+              <text class="count">{{item.reply_list[1].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
+              <text class='reply-item-info'>{{item.reply_list[1].comment_content[2]}}</text>
+            </view>
+          </view>
+
 
           <!-- 多条评论 -->
+          <view class='replys' wx:if="{{item.reply_list.length>2&&showMore==0}}">
+            <view class='reply-item'>
+              <text class="count">{{item.reply_list[0].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
+              <text class='reply-item-info'>{{item.reply_list[0].comment_content[2]}}</text>
+            </view>
 
+            <view class='reply-item'>
+              <text class="count">{{item.reply_list[1].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
+              <text class='reply-item-info'>{{item.reply_list[1].comment_content[2]}}</text>
+            </view>
+            <text class="count" bindtap='showMore'>共有{{item.reply_list.length}}条回复></text>
+          </view>
 
-
-
-
+          <!-- 点击显示所有的评论 -->
+          <view class='replys' wx:if="{{item.reply_list.length>0&&showMore==1}}">
+            <block wx:for="{{item.reply_list}}" wx:key="list-id">
+              <view class='reply-item'>
+                <text class="count">{{item.comment_content[0]}}回复{{item.comment_content[1]}}:</text>
+                <text class='reply-item-info'>{{item.comment_content[2]}}</text>
+              </view>
+            </block>
+          </view>
 
           <view class='time-icon'>
             <text>{{item.create_time}}</text>
             <view class='icon'>
-              <image src='/image/icon/del.png' style='width:36rpx;height:36rpx;' wx:if="{{item.type!=1}}" bindtap='toDel'></image>
-              <image src='/image/icon/talk1.png' style='width:36rpx;height:36rpx;margin-left:50rpx' bindtap='toTalk'></image>
+              <image src='/image/icon/del.png' style='width:36rpx;height:36rpx;' wx:if="{{item.type==1}}" data-id='{{item.comment_id}}' bindtap='toDel'></image>
+              <image src='/image/icon/talk1.png' style='width:36rpx;height:36rpx;margin-left:50rpx' data-id='{{item.comment_id}}' bindtap='toTalk'></image>
             </view>
           </view>
-
 
         </view>
 
       </view>
 
     </block>
-
-
 
   </view>
 

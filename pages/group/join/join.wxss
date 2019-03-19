@@ -16,6 +16,7 @@
   width: 185rpx;
   height: 185rpx;
   margin-right: 15rpx;
+  margin-left: 15rpx;
   
 }
 
@@ -27,7 +28,7 @@
 /* 描述 */
 
 .info {
-  width: 545rpx;
+  width: 530rpx;
   display: flex;
   flex-direction: column;
   border-bottom: 1rpx solid #e9e9e9;

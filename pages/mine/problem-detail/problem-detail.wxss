@@ -14,7 +14,7 @@
 
 .area textarea {
   width: 730rpx;
-  height: 300rpx;
+  height: 380rpx;
 }
 
 .clear text {

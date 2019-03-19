@@ -32,9 +32,7 @@ Page({
           grouplist: list
         })
       }
-
     })
-
   },
 
   // 带参跳转

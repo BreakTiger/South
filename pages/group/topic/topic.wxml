@@ -7,7 +7,7 @@
 
     <!-- 话题图片 -->
     <view class='p1'>
-      <image src=''></image>
+      <image src='{{item.pub_head}}'></image>
     </view>
 
     <!-- 话题信息 -->

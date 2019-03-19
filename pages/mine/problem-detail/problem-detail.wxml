@@ -6,7 +6,7 @@
 
   <view class='area'>
     <!-- 文本域 -->
-    <textarea placeholder-class="place-holder" placeholder="请填写5个字以上的问题描述以便我们提供更好的帮助" name="introduction" maxlength='200' bindinput='limit' value="{{text}}"></textarea>
+    <textarea placeholder-class="place-holder" placeholder="请填写5个字以上的问题描述以便我们提供更好的帮助" name="introduction" maxlength='200' bindinput='limit' value="{{area}}"></textarea>
     <!-- 显示字数 -->
     <view class="clear">
       <text>{{current}} / {{max}} </text>
@@ -43,16 +43,9 @@
 
   <view class='input-line row'>
     <text>联系方式：</text>
-    <input placeholder='邮箱/手机号' bindinput='forContact' value='{{value}}'></input>
+    <input placeholder='请输入手机号' bindinput='forContact' value='{{phone}}'></input>
   </view>
 
-
-
-
   <button class='upBtn' bindtap='upData'>提交</button>
-
-
-
-
 
 </view>

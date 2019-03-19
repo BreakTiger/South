@@ -12,12 +12,14 @@ Page({
   data: {
     tid: '',
     gid: '',
+    cid: '',
     infolist: '',
     commentslist: [],
     wind: false,
     type: '',
     value: '',
-    val:''
+    val: '',
+    showMore: 0
   },
 
   /**
@@ -49,7 +51,7 @@ Page({
         let info = res.data.data.info
         // console.log(info)
         that.setData({
-          infolist: info 
+          infolist: info
         })
         let article = res.data.data.info.topic_content
         WxParse.wxParse('article', 'html', article, that, 5); //富文本解析
@@ -60,6 +62,7 @@ Page({
 
   },
 
+  // 评论列表
   comments: function() {
     let that = this
     let session_key = wx.getStorageSync('session_key')
@@ -90,20 +93,18 @@ Page({
 
   // 当前的用户（自己）发布评论
   myTalk: function() {
-    // let that = this
     this.setData({
       wind: true,
       type: 1
     })
-    console.log('11111')
-
   },
 
   // 评论其他人
-  toTalk: function() {
-    console.log('2222')
+  toTalk: function(e) {
+    let cid = e.currentTarget.dataset.id
     this.setData({
       wind: true,
+      cid: cid,
       type: 2
     })
   },
@@ -120,15 +121,112 @@ Page({
   toVal: function(e) {
     let val = e.detail.value
     this.setData({
-      val:val
+      val: val
     })
   },
 
   // 发布
-  toSand:function(){
+  toSand: function(e) {
     let that = this
-    
+    // 通过type来判断使用哪一种发布的方法
+    let type = that.data.type
+    let session_key = wx.getStorageSync('session_key');
+    let tid = that.data.tid
+    let gid = that.data.gid
+    let input = that.data.val
+    console.log('输入：', input);
+    if (input == "") {
+      wx.showToast({
+        title: '请输入您的评论内容',
+        icon: 'none'
+      })
+    } else {
+      if (type == 1) { //自己发布评论
+        let data = {
+          session_key: session_key,
+          topic_id: tid,
+          group_id: gid,
+          comment_content: input
+        }
+        console.log('data:', data)
+        let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicReply'
+        modal.loading()
+        request.sendRequest(url, 'post', data, {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }).then(function(res) {
+          let status = res.data.status
+          if (status == 200) {
+            that.setData({
+              val: '',
+              wind: false
+            })
+            that.onPullDownRefresh();
+            modal.loaded();
+          }
+        })
+      } else if (type == 2) { //评论别人发布的评论
+        let cid = that.data.cid
+        let data = {
+          session_key: session_key,
+          topic_id: tid,
+          group_id: gid,
+          comment_content: input,
+          comment_id: cid
+        }
+        console.log('data:', data);
+        let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicReply'
+        modal.loading()
+        request.sendRequest(url, 'post', data, {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }).then(function(res) {
+          console.log(res)
+          let status = res.data.status
+          if (status == 200) {
+            that.setData({
+              val: '',
+              wind: false
+            })
+            that.onPullDownRefresh();
+            modal.loaded();
+          }
+        })
 
+
+      }
+    }
+  },
+
+  // 删除当前用户自己发布的评论
+  toDel: function(e) {
+    let that = this
+    let session_key = wx.getStorageSync('session_key');
+    let tid = that.data.tid
+    let gid = that.data.gid
+    let cid = e.currentTarget.dataset.id
+    let data = {
+      session_key: session_key,
+      topic_id: tid,
+      group_id: gid,
+      comment_id: cid
+    }
+    console.log(data);
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicDelete'
+    modal.loading()
+    request.sendRequest(url, 'get', data, {}).then(function(res) {
+      let status = res.data.status
+      if (status == 200) {
+        that.onPullDownRefresh();
+        modal.loaded()
+      }
+    })
+  },
+
+
+  // 显示更多回复
+  showMore: function() {
+    this.setData({
+      showMore: 1
+    })
   },
 
 
@@ -167,6 +265,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1000
+    })
+    setTimeout(() => {
+      wx.stopPullDownRefresh()
+    }, 1000);
+    this.comments()
 
   },
 

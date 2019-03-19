@@ -14,7 +14,10 @@ Page({
     inpuVal: '', //输入的内容
     imglist: [], //图片组
     imgmax: 4, //上传最多张数
-    contact: ''
+    contact: '', //联系电话
+    area: '', //文本默认
+    phone: '', //联系方式默认
+    upimg: '' //转换后的图片
   },
 
   /**
@@ -95,46 +98,136 @@ Page({
   forContact: function(e) {
     let that = this
     let contact = e.detail.value
-    console.log('contact:', contact);
     that.setData({
       contact: contact
     })
   },
 
-  // 提交
+
+  // 提交1- 获取图片（需判断）
   upData: function() {
     let that = this
 
+    let phone = that.data.contact
+    console.log('联系方式：', phone);
+    let content = that.data.inpuVal
+    console.log('输入内容：', content)
+    let image = that.data.imglist
+    console.log('图片组：', image)
+    let type = that.data.typeid
+    console.log('反馈类型ID：', type)
+    let token = wx.getStorageSync('token')
+    console.log('token:', token)
+    let a = [];
 
 
-    // // 获取数据
-    // let token = wx.getStorageSync('token')
-    // console.log('token:', token)
+    // 判断是否有图片
+    if (image.length > 0) { //存在  
+      let url = app.globalData.api + '/index.php/App/Tool/uploadPic'
+      for (var i = 0; i < image.length; i++) {
+        let item = image[i]
+        wx.uploadFile({
+          url: url,
+          filePath: item,
+          name: 'file',
+          header: {
+            "token": token
+          },
+          success: function(res) {
+            console.log(res)
+            let info = JSON.parse(res.data)
+            let status = info.status
+            if (status == 200) {
+              let imgData = info.data
+              // console.log(imgData)
+              a.push(imgData)
+              let b = a.join(',')
+              // console.log(b);
+              that.upPic(b)
+            }
+          }
+        })
+      }
 
-    // let input = that.data.inpuVal
-    // console.log('输入的内容：', input)
 
-    // let image = that.data.imglist
-    // console.log('图片组：', image)
+    } else { //不存在
+      if (content != '') { //输入内容无法为空
+        let data = {
+          telephone: phone,
+          content: content,
+          image: '',
+          type: type
+        }
+        console.log('data:', data)
+        let url = app.globalData.api + '/index.php/App/User/feedback'
+        request.sendRequest(url, 'post', data, {
+          "token": token
+        }).then(function(res) {
+          console.log(res)
+          let status = res.data.status
+          if (status == 200) {
+            wx.redirectTo({
+              url: '/pages/mine/results/results',
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '请输入您的意见与建议',
+          icon: 'none'
+        })
+      }
 
-    // //选填
-    // let contact = that.data.contact
-    // console.log('联系方式：', contact)
-
-    // let data = {}
-
-    // if (contact!=''){
-
-    // }else{
-    //   data = {
-    //     telephone:contact,
-
-    //   }
-    // }
-
-
+    }
 
   },
+
+  upPic: function(b) {
+    let that = this
+    let image = b
+    console.log('image:', image);
+    let phone = that.data.contact
+    console.log('联系方式：', phone);
+    let content = that.data.inpuVal
+    console.log('输入内容：', content)
+    let type = that.data.typeid
+    console.log('反馈类型ID：', type)
+    let token = wx.getStorageSync('token')
+    console.log('token:', token)
+
+    if (content != '') {
+      let data = {
+        telephone: phone,
+        content: content,
+        image: image,
+        type: type
+      }
+      console.log('data:', data);
+      let url = app.globalData.api + '/index.php/App/User/feedback'
+      request.sendRequest(url, 'post', data, {
+        "token": token
+      }).then(function(res) {
+        console.log(res)
+        let status = res.data.status
+        if (status==200){
+          wx.redirectTo({
+            url: '/pages/mine/results/results',
+          })
+        }
+      })
+
+    } else {
+      wx.showToast({
+        title: '请输入您的意见与建议',
+        icon: 'none'
+      })
+    }
+  },
+
+
+
+
+
 
 
   /**
