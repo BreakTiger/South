@@ -49,7 +49,11 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+    that.lunbo()
+  },
 
+  lunbo: function() {
+    let that = this
     let token = wx.getStorageSync('token')
     console.log('token:', token);
     let data = {}
@@ -58,7 +62,7 @@ Page({
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
-      
+
       console.log(res)
       let status = res.data.status
       if (status == 200) {
@@ -101,7 +105,7 @@ Page({
 
   },
 
-  selectKinds:function(e){
+  selectKinds: function(e) {
     let src = e.currentTarget.dataset.src
     console.log(src)
     let url = '/pages/index/outNet/outNet?src='
@@ -159,7 +163,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 1000
+    })
+    setTimeout(() => {
+      wx.stopPullDownRefresh()
+    }, 1000);
+    this.lunbo()
   },
 
   /**

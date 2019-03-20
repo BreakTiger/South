@@ -48,6 +48,37 @@ Page({
         that.setData({
           classlist: list
         })
+      } else if (status == 201) {
+        // setInterval(function(){
+        //   wx.showToast({
+        //     title: '请求失败，请检查网络',
+        //     icon: 'none'
+        //   })
+        // },500)
+      } else if (status == 202) {
+
+        // setInterval(function() {
+        //   wx.showToast({
+        //     title: '微信登陆失效，请重新登陆',
+        //     icon:'none'
+        //   })
+        // }, 1000)
+        // wx.reLaunch({
+        //   url: '/pages/login/login',
+        //   icon: 'none'
+        // })
+
+      } else {
+        // setInterval(function () {
+        //   wx.showToast({
+        //     title: '易班登陆失效，请重新登陆',
+        //     icon: 'none'
+        //   })
+        // }, 1000)
+        // wx.reLaunch({
+        //   url: '/pages/login/login',
+        // })
+
       }
     })
   },
@@ -128,7 +159,7 @@ Page({
   toClass: function(e) {
     let src = e.currentTarget.dataset.src
     let url = '/pages/information/classinfo/classinfo?src=';
-    modals.navigate(url,src)
+    modals.navigate(url, src)
   },
 
   toNotice: function(e) {

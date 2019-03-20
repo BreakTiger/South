@@ -39,6 +39,7 @@
         <!-- 右边文字容器 -->
         <view class='right-info'>
 
+          <!-- 用户名+发布内容 -->
           <view class='name-info'>
             <view class='username'>{{item.pub_nick}}</view>
             <view class='info'>{{item.comment_content}}</view>
@@ -47,13 +48,13 @@
           <!-- 回复评论 一下分为四种情况-->
 
           <!-- 一条评论 -->
-          <view class='reply' wx:if="{{item.reply_list.length==1&&showMore==0}}">
-            <text class="count" bindtap='showMore'>共有{{item.reply_list.length}}条回复></text>
+          <view class='reply' wx:if="{{item.reply_list.length==1&&item.show==0}}" >
+            <text class="count" catchtap='showMore' data-index='{{index}}' data-cid='{{item.comment_id}}'>共有{{item.reply_list.length}}条回复></text>
           </view>
 
 
           <!-- 俩条评论 -->
-          <view class='replys' wx:if="{{item.reply_list.length==2&&showMore==0}}">
+          <view class='replys' wx:if="{{item.reply_list.length==2&&item.show==0}}">
             <view class='reply-item'>
               <text class="count">{{item.reply_list[0].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
               <text class='reply-item-info'>{{item.reply_list[0].comment_content[2]}}</text>
@@ -66,7 +67,7 @@
 
 
           <!-- 多条评论 -->
-          <view class='replys' wx:if="{{item.reply_list.length>2&&showMore==0}}">
+          <view class='replys' wx:if="{{item.reply_list.length>2&&item.show==0}}" >
             <view class='reply-item'>
               <text class="count">{{item.reply_list[0].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
               <text class='reply-item-info'>{{item.reply_list[0].comment_content[2]}}</text>
@@ -76,11 +77,11 @@
               <text class="count">{{item.reply_list[1].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
               <text class='reply-item-info'>{{item.reply_list[1].comment_content[2]}}</text>
             </view>
-            <text class="count" bindtap='showMore'>共有{{item.reply_list.length}}条回复></text>
+            <text class="count" catchtap='showMore' data-index='{{index}}' data-cid='{{item.comment_id}}'>共有{{item.reply_list.length}}条回复></text>
           </view>
 
           <!-- 点击显示所有的评论 -->
-          <view class='replys' wx:if="{{item.reply_list.length>0&&showMore==1}}">
+          <view class='replys' wx:if="{{item.reply_list.length>0&&item.show==1}}">
             <block wx:for="{{item.reply_list}}" wx:key="list-id">
               <view class='reply-item'>
                 <text class="count">{{item.comment_content[0]}}回复{{item.comment_content[1]}}:</text>
@@ -89,6 +90,7 @@
             </block>
           </view>
 
+          <!-- 删除+评论 -->
           <view class='time-icon'>
             <text>{{item.create_time}}</text>
             <view class='icon'>

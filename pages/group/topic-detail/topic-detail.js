@@ -19,7 +19,8 @@ Page({
     type: '',
     value: '',
     val: '',
-    showMore: 0
+    showMore: 0,
+    show: "",
   },
 
   /**
@@ -83,13 +84,43 @@ Page({
       let status = res.data.status
       if (status == 200) {
         let list = res.data.data.info.list
-        console.log(list)
-        that.setData({
-          commentslist: list
-        })
+        // console.log(list)
+        var atr = []
+        for (var i = 0; i < list.length; i++) {
+          let item = list[i]
+          item.show = '0' //给数组中每一个item增加一个变量
+          // console.log(item)
+          atr.push(item)
+          // console.log('atr:', atr)
+          that.setData({
+            commentslist: atr
+          })
+        }
       }
     })
   },
+
+  // 显示更多回复
+  showMore: function(e) {
+    let that = this
+    console.log(e)
+
+    let index = e.currentTarget.dataset.index
+    console.log('index:',index);
+    let cid = e.currentTarget.dataset.cid
+    console.log('cid：',cid);
+    let item = that.data.commentslist[index]
+    console.log('item:',item)
+    let comment_id = item.comment_id
+    if (cid == comment_id){
+      item.show = '1'
+    }
+    let change = that.data.commentslist 
+    that.setData({
+      commentslist: change
+    })
+  },
+
 
   // 当前的用户（自己）发布评论
   myTalk: function() {
@@ -222,12 +253,6 @@ Page({
   },
 
 
-  // 显示更多回复
-  showMore: function() {
-    this.setData({
-      showMore: 1
-    })
-  },
 
 
 
