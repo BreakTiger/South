@@ -48,7 +48,7 @@
           <!-- 回复评论 一下分为四种情况-->
 
           <!-- 一条评论 -->
-          <view class='reply' wx:if="{{item.reply_list.length==1&&item.show==0}}" >
+          <view class='reply' wx:if="{{item.reply_list.length==1&&item.show==0}}">
             <text class="count" catchtap='showMore' data-index='{{index}}' data-cid='{{item.comment_id}}'>共有{{item.reply_list.length}}条回复></text>
           </view>
 
@@ -67,7 +67,7 @@
 
 
           <!-- 多条评论 -->
-          <view class='replys' wx:if="{{item.reply_list.length>2&&item.show==0}}" >
+          <view class='replys' wx:if="{{item.reply_list.length>2&&item.show==0}}">
             <view class='reply-item'>
               <text class="count">{{item.reply_list[0].comment_content[0]}}回复{{item.reply_list[0].comment_content[1]}}:</text>
               <text class='reply-item-info'>{{item.reply_list[0].comment_content[2]}}</text>
@@ -107,12 +107,22 @@
 
   </view>
 
-</view>
+  <!-- 显示更多评论，只用一次 -->
+  <view class='showMore' bindtap='toShow' wx:if="{{commentslist.length>3&&showmore==0}}">
+    <text>展开更多评论</text>
+    <image src='/image/icon/bottom.png'></image>
+  </view>
 
+</view>
 
 <!-- 评论输入框 -->
 <view class='window' wx:if="{{wind}}" bindtap='closeWind'></view>
 <view class='input-line row' wx:if="{{wind}}">
   <input type='text' placeholder='评论' value='{{value}}' bindinput='toVal'></input>
   <view class='sndBtn' bindtap='toSand'>发布</view>
+</view>
+
+<!-- 分页 -->
+<view class='page-add-data' wx:if="{{showmore==1}}">
+  <text>{{pageTottomText}}</text>
 </view>

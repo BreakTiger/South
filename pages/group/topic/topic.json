@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "群话题"
+  "navigationBarTitleText": "群话题",
+  "enablePullDownRefresh": true
 }

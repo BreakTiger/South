@@ -83,12 +83,6 @@ Page({
         // console.log('token:', token);
         // 设置为缓存
         wx.setStorageSync('token', token);
-
-        // wx.redirectTo({
-        //   url: '/pages/login/outlook/outlook',
-        // })
-
-
         wx.navigateTo({
           url: '/pages/login/outlook/outlook'
         })

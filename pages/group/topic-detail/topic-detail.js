@@ -19,8 +19,11 @@ Page({
     type: '',
     value: '',
     val: '',
-    showMore: 0,
-    show: "",
+    page: 1,
+    count: 15,
+    pageTottomText: '',
+    showmore: 0
+
   },
 
   /**
@@ -66,15 +69,23 @@ Page({
   // 评论列表
   comments: function() {
     let that = this
+
     let session_key = wx.getStorageSync('session_key')
     let tid = that.data.tid
     let gid = that.data.gid
+    let page = that.data.page
+    let count = that.data.count
+
     let data = {
       session_key: session_key,
       topic_id: tid,
-      group_id: gid
+      group_id: gid,
+      page: page,
+      count: count
     }
+    console.log(data);
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicComment';
+
     modal.loading()
     request.sendRequest(url, 'post', data, {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -89,9 +100,7 @@ Page({
         for (var i = 0; i < list.length; i++) {
           let item = list[i]
           item.show = '0' //给数组中每一个item增加一个变量
-          // console.log(item)
           atr.push(item)
-          // console.log('atr:', atr)
           that.setData({
             commentslist: atr
           })
@@ -106,16 +115,16 @@ Page({
     console.log(e)
 
     let index = e.currentTarget.dataset.index
-    console.log('index:',index);
+    console.log('index:', index);
     let cid = e.currentTarget.dataset.cid
-    console.log('cid：',cid);
+    console.log('cid：', cid);
     let item = that.data.commentslist[index]
-    console.log('item:',item)
+    console.log('item:', item)
     let comment_id = item.comment_id
-    if (cid == comment_id){
+    if (cid == comment_id) {
       item.show = '1'
     }
-    let change = that.data.commentslist 
+    let change = that.data.commentslist
     that.setData({
       commentslist: change
     })
@@ -221,8 +230,6 @@ Page({
             modal.loaded();
           }
         })
-
-
       }
     }
   },
@@ -248,6 +255,64 @@ Page({
       if (status == 200) {
         that.onPullDownRefresh();
         modal.loaded()
+      }
+    })
+  },
+
+  // 展开更多评论
+  toShow: function() {
+    let that = this
+
+    that.setData({
+      showmore: 1,
+      pageTottomText: app.globalData.addText
+    })
+
+    let list = that.data.commentslist
+    console.log('已经获取的数据：', list);
+
+    let session_key = wx.getStorageSync('session_key')
+    let tid = that.data.tid
+    let gid = that.data.gid
+
+    let page = 2
+    let count = that.data.count
+
+    let data = {
+      session_key: session_key,
+      topic_id: tid,
+      group_id: gid,
+      page: page,
+      count: count
+    }
+    console.log(data)
+    let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicComment'
+    modal.loading()
+    request.sendRequest(url, 'post', data, {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then(function(res) {
+      console.log(res)
+      let status = res.data.status
+      if (status == 200) {
+        let result = res.data.data.info
+        console.log(result)
+        if (result.length != 0) {
+          that.setData({
+            page: page
+          })
+          setTimeout(function() {
+            let add = list.concat(result); //拼接
+            that.setData({
+              commentslist: add
+            })
+          }, 1000)
+          modal.loaded()
+        } else {
+          that.setData({
+            pageTottomText: app.globalData.endText,
+          })
+          modal.loaded()
+        }
       }
     })
   },
@@ -306,6 +371,60 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let that = this
+    let showmore = that.data.showmore
+    console.log('showmore:', showmore)
+    // 上拉刷新的方法必须在使用过展开更多评论按钮后开始
+    if (showmore == 1) {
+      that.setData({
+        pageTottomText: app.globalData.addText
+      })
+      let page = that.data.page
+      page += 1
+      console.log('page:', page);
+      let count = that.data.count
+      let session_key = wx.getStorageSync('session_key')
+      let tid = that.data.tid
+      let gid = that.data.gid
+      let data = {
+        session_key: session_key,
+        topic_id: tid,
+        group_id: gid,
+        page: page,
+        count: count
+      }
+      console.log('data:', data);
+      let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanTopicComment'
+      modal.loading()
+      request.sendRequest(url, 'post', data, {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }).then(function(res) {
+        console.log(res)
+        let status = res.data.status
+        if (status == 200) {
+          let result = res.data.data.info
+          if (result.length != 0) {
+            that.setData({
+              page: page
+            })
+            setTimeout(function() {
+              let add = list.concat(result); //拼接
+              that.setData({
+                commentslist: add
+              })
+            }, 1000)
+            modal.loaded()
+          } else {
+            that.setData({
+              pageTottomText: app.globalData.endText,
+            })
+            modal.loaded()
+          }
+        }
+      })
+
+
+    }
 
   },
 

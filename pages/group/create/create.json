@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "我创建的公共群"
+  "navigationBarTitleText": "我创建的公共群",
+  "enablePullDownRefresh": true
 }

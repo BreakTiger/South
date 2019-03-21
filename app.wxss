@@ -1,6 +1,4 @@
-
-
-.container{
+.container {
   width: 750rpx;
   height: 100%;
   display: flex;
@@ -8,14 +6,24 @@
   align-items: center;
 }
 
-.coun{
+.coun {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.page-add-data {
+  width: 100%;
+  text-align: center;
+}
+
+.page-add-data text {
+  font-size: 24rpx;
+  color: #999;
 }

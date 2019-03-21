@@ -197,3 +197,25 @@
   font-size: 28rpx;
   padding-top: 8rpx;
 }
+
+.showMore {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30rpx 0;
+  /* border-top: 2rpx solid #e7e7e7; */
+}
+
+.showMore text {
+  font-size: 28rpx;
+  color: #f08d01;
+  margin-left: 275rpx;
+  margin-right: 18rpx;
+}
+
+.showMore image {
+  width: 18rpx;
+  height: 10rpx;
+}

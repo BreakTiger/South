@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    groupList: []
+    groupList: [],
+    page:1,
+    count:15
   },
 
   /**
@@ -18,8 +20,11 @@ Page({
   onLoad: function(options) {
     let that = this
     let session_key = wx.getStorageSync('session_key')
+    let page = that.data.page
     let data = {
-      session_key: session_key
+      session_key: session_key,
+      page: page,
+      count:15
     }
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanCreateGroup'
     modals.loading()

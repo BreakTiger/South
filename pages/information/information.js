@@ -9,9 +9,12 @@ Page({
    */
   data: {
     currentTab: 0,
-    winHeight: '',
     classlist: [],
-    noticelist: []
+    noticelist: [],
+    page: 1,
+    pageN:2,
+    count: 15,
+    pageTottomText: ''
   },
 
   /**
@@ -19,66 +22,39 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-
-    that.classinfo()
-
+    let tab = that.data.currentTab
+    if (tab == 0) {
+      that.classinfo()
+    } else if (tab == 1) {
+      that.noticeinfo()
+    }
   },
 
   // 易班资讯
   classinfo: function() {
     let that = this
-
-
     let session_key = wx.getStorageSync('session_key')
+    let page = that.data.page
+    let count = that.data.count
     let data = {
-      session_key: session_key
+      session_key: session_key,
+      page: page,
+      count: count
     }
+    console.log(data)
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanInfolist'
     modals.loading()
     request.sendRequest(url, 'post', data, {
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
-      modals.loaded()
       console.log(res);
       let status = res.data.status
-      console.log(status)
-      let list = res.data.data
-      console.log(list)
       if (status == 200) {
+        let list = res.data.data
         that.setData({
           classlist: list
         })
-      } else if (status == 201) {
-        // setInterval(function(){
-        //   wx.showToast({
-        //     title: '请求失败，请检查网络',
-        //     icon: 'none'
-        //   })
-        // },500)
-      } else if (status == 202) {
-
-        // setInterval(function() {
-        //   wx.showToast({
-        //     title: '微信登陆失效，请重新登陆',
-        //     icon:'none'
-        //   })
-        // }, 1000)
-        // wx.reLaunch({
-        //   url: '/pages/login/login',
-        //   icon: 'none'
-        // })
-
-      } else {
-        // setInterval(function () {
-        //   wx.showToast({
-        //     title: '易班登陆失效，请重新登陆',
-        //     icon: 'none'
-        //   })
-        // }, 1000)
-        // wx.reLaunch({
-        //   url: '/pages/login/login',
-        // })
-
+        modals.loaded()
       }
     })
   },
@@ -86,31 +62,30 @@ Page({
   // 通知公告
   noticeinfo: function() {
     let that = this
-
+    let page = that.data.page
+    let count = that.data.count
     let token = wx.getStorageSync('token')
-    let data = {}
+    let data = {
+      page: page,
+      count: count
+    }
+    console.log(data)
     let url = app.globalData.api + '/index.php/app/information/messageAll'
     modals.loading()
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
-      modals.loaded()
-      console.log(res)
+      console.log(res);
       let status = res.data.status
-      let list = res.data.data
-      console.log(list)
       if (status == 200) {
+        let list = res.data.data
         that.setData({
           noticelist: list
         })
+        modals.loaded()
       }
     })
-
-
   },
-
-
-
 
   // 点击切换
   selectType: function(e) {
@@ -132,8 +107,6 @@ Page({
 
   },
 
-
-
   // 滑动切换
   sChange: function(e) {
     let that = this
@@ -154,8 +127,6 @@ Page({
 
   },
 
-
-
   toClass: function(e) {
     let src = e.currentTarget.dataset.src
     let url = '/pages/information/classinfo/classinfo?src=';
@@ -163,46 +134,34 @@ Page({
   },
 
   toNotice: function(e) {
-
     let mid = e.currentTarget.dataset.id
     let url = '/pages/information/notice/notice?mid=';
     modals.navigate(url, mid);
-
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
+    let tab = this.data.currentTab
+    if (tab == 0) {
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        duration: 1000
+      })
+      setTimeout(() => {
+        wx.stopPullDownRefresh()
+      }, 1000);
+      this.classinfo()
+    } else if (tab == 1) {
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+        duration: 1000
+      })
+      setTimeout(() => {
+        wx.stopPullDownRefresh()
+      }, 1000);
+      this.noticeinfo()
+    }
 
   },
 
@@ -210,6 +169,21 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let that = this
+    let tab = that.data.currentTab
+    // 判断
+    if (tab == 0) {
+      console.log(that.data.page)
+      that.setData({
+        pageTottomText: app.globalData.addText
+      })
+
+    } else if (tab == 1) {
+      console.log(that.data.page)
+      that.setData({
+        pageTottomText: app.globalData.addText
+      })
+    }
 
   },
 

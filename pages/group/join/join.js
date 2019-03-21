@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    grouplist: []
+    grouplist: [],
+    page: 1,
+    count: 15
   },
 
   /**
@@ -17,7 +19,11 @@ Page({
   onLoad: function(options) {
     let that = this
     let token = wx.getStorageSync('token')
-    let data = {}
+    let page = that.data.page
+    let data = {
+      page: page,
+      count:15
+    }
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanAddGroup'
     modals.loading()
     request.sendRequest(url, 'post', data, {

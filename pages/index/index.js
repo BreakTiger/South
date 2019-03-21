@@ -41,7 +41,10 @@ Page({
         src: 'https://student-wechat.sustc.edu.cn/?ticket=ST-935222-3TonAzSqZwyHkq0Cwp2T-cas.sustc.edu.cn#/app/course-selection'
       }
     ],
-    notice: []
+    notice: [],
+    page: 1,
+    count: 15,
+    pageTottomText: ''
   },
 
   /**
@@ -62,7 +65,6 @@ Page({
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
-
       console.log(res)
       let status = res.data.status
       if (status == 200) {
@@ -79,19 +81,29 @@ Page({
   announcements: function() {
     let that = this
     let token = wx.getStorageSync('token')
-    let data = {}
-    let url = app.globalData.api + '/index.php/app/information/messagePush'
+    let page = that.data.page
+    let count = that.data.count
+    let data = {
+      page: page,
+      count: count
+    }
+    console.log('data:', data);
+    let url = app.globalData.api + '/index.php/app/information/messagePush';
     modals.loading()
     request.sendRequest(url, 'post', data, {
-      'token': token
+      "token": token
     }).then(function(res) {
       // console.log(res)
-      let notice = res.data.data
       let status = res.data.status
       if (status == 200) {
+        let notice = res.data.data
+        console.log(notice)
+        page += 1
         that.setData({
-          notice: notice
+          notice: notice,
+          page: page
         })
+        console.log(that.data.page)
         modals.loaded()
       }
     })
@@ -102,7 +114,6 @@ Page({
     console.log(src)
     let url = '/pages/index/outNet/outNet?src='
     modals.navigate(url, src);
-
   },
 
   selectKinds: function(e) {
@@ -112,7 +123,6 @@ Page({
     modals.navigate(url, src);
   },
 
-
   // 进入通知详情
   toNotice: function(e) {
     let mid = e.currentTarget.dataset.id
@@ -120,43 +130,17 @@ Page({
     modals.navigate(url, mid);
   },
 
-
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     // 判断用户是否登陆过
-
     // 没登陆则缓存中不存在token
-
     if (!wx.getStorageSync('token')) {
       wx.navigateTo({
         url: '/pages/login/login',
       })
     }
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
   },
 
   /**
@@ -178,7 +162,54 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let that = this
+    let token = wx.getStorageSync('token')
+    let page = that.data.page
+    let count = that.data.count
+    // 获取之前获取的数据
+    let list = that.data.notice
+    console.log('已经获取的数据：', list);
 
+    // 开始提示加载
+    that.setData({
+      pageTottomText: app.globalData.addText
+    })
+    let data = {
+      page: page,
+      count: count
+    }
+    console.log(data)
+    let url = app.globalData.api + '/index.php/app/information/messagePush'
+    modals.loading()
+    request.sendRequest(url, 'post', data, {
+      "token": token
+    }).then(function(res) {
+      console.log('555:', res)
+      let status = res.data.status
+      if (status == 200) {
+        let result = res.data.data
+        console.log(result)
+        if (result.length != 0) {
+          page += 1
+          that.setData({
+            page: page
+          })
+          setTimeout(function() {
+            let add = list.concat(result);
+            that.setData({
+              notice: add
+            })
+          }, 1000)
+          console.log('333:', page)
+          modals.loaded()
+        } else {
+          that.setData({
+            pageTottomText: app.globalData.endText,
+          })
+          modals.loaded()
+        }
+      }
+    })
   },
 
   /**

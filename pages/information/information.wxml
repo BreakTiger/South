@@ -1,41 +1,83 @@
-<!-- 顶部导航栏 -->
-<view class='top-line row'>
+<view class='container'>
+  <!-- 顶部导航栏 -->
+  <view class='top-line row'>
 
-  <view class='type coun' bindtap='selectType' data-current="0">
-    <view class="type-name {{currentTab==0 ? 'active' : ''}}">易班资讯</view>
-    <view class="{{currentTab==0 ? 'cpioint' : ''}}"></view>
+    <view class='type coun' bindtap='selectType' data-current="0">
+      <view class="type-name {{currentTab==0 ? 'active' : ''}}">易班资讯</view>
+      <view class="{{currentTab==0 ? 'cpioint' : ''}}"></view>
+    </view>
+
+
+    <view class='type coun' bindtap='selectType' data-current="1">
+      <view class="type-name {{currentTab==1 ? 'active' : ''}}">通知公告</view>
+      <view class="{{currentTab==1 ? 'cpioint' : ''}}"></view>
+    </view>
+
   </view>
+  <!-- 内容盒子 -->
+  <swiper class='content' current='{{currentTab}}' duration="500" bindchange='sChange'>
 
+    <swiper-item>
 
-  <view class='type coun' bindtap='selectType' data-current="1">
-    <view class="type-name {{currentTab==1 ? 'active' : ''}}">通知公告</view>
-    <view class="{{currentTab==1 ? 'cpioint' : ''}}"></view>
-  </view>
+      <scroll-view scroll-y style='height:100%;'>
 
-</view>
+        <block wx:for="{{classlist}}" wx:key="list-id" wx:for-index="idx">
 
-<!-- 内容盒子 -->
+          <view class='list-box'>
 
+            <view class='list-item' data-src='{{item.push_href}}' bindtap='toClass'>
 
-<swiper class='content' current='{{currentTab}}' duration="500" bindchange='sChange'>
+              <image src='{{item.push_pic}}' class='pic'></image>
 
-  <swiper-item>
+              <view class='title-read-time'>
 
-    <scroll-view scroll-y style='height:100%;'>
+                <view class='title'>{{item.push_title}}</view>
 
-      <block wx:for="{{classlist}}" wx:key="list-id" wx:for-index="idx">
+                <view class='read-time'>
 
-        <view class='list-box'>
+                  <view class='read row'>
+                    <image src='/image/icon/eye.png'></image>
+                    <text class='f1'>{{item.number}}</text>
+                  </view>
 
-          <view class='list-item' data-src='{{item.push_href}}' bindtap='toClass'>
+                  <view class='time row'>
+                    <image src='/image/icon/time.png'></image>
+                    <text class='f1'>{{item.create_time}}</text>
+                  </view>
 
-            <image src='{{item.push_pic}}' class='pic'></image>
+                </view>
 
-            <view class='title-read-time'>
+              </view>
 
-              <view class='title'>{{item.push_title}}</view>
+            </view>
 
-              <view class='read-time'>
+          </view>
+
+        </block> 
+
+      </scroll-view>
+
+    </swiper-item>
+
+    <swiper-item>
+
+      <scroll-view scroll-y style='height:100%;'>
+
+        <block wx:for="{{noticelist}}" wx:key="list-id">
+
+          <view class='list-box' data-id='{{item.message_id}}' bindtap='toNotice'>
+
+            <view class='notice-list-item'>
+
+              <view class='point-titel'>
+
+                <view class='point'></view>
+
+                <view class='titel'>{{item.title}}</view>
+
+              </view>
+
+              <view class='read-time' style='margin-bottom: 10rpx;'>
 
                 <view class='read row'>
                   <image src='/image/icon/eye.png'></image>
@@ -44,7 +86,7 @@
 
                 <view class='time row'>
                   <image src='/image/icon/time.png'></image>
-                  <text class='f1'>{{item.create_time}}</text>
+                  <text class='f1'>{{item.send_time}}</text>
                 </view>
 
               </view>
@@ -53,58 +95,16 @@
 
           </view>
 
-        </view>
+        </block>
 
-      </block>
+      </scroll-view>
 
-    </scroll-view>
+    </swiper-item>
 
-  </swiper-item>
+  </swiper>
+</view>
 
-  <swiper-item>
-
-    <scroll-view scroll-y style='height:100%;'>
-
-      <block wx:for="{{noticelist}}" wx:key="list-id">
-
-        <view class='list-box' data-id='{{item.message_id}}' bindtap='toNotice'>
-
-          <view class='notice-list-item'>
-
-            <view class='point-titel'>
-
-              <view class='point'></view>
-
-              <view class='titel'>{{item.title}}</view>
-
-            </view>
-
-            <view class='read-time' style='margin-bottom: 10rpx;'>
-
-              <view class='read row'>
-                <image src='/image/icon/eye.png'></image>
-                <text class='f1'>{{item.number}}</text>
-              </view>
-
-              <view class='time row'>
-                <image src='/image/icon/time.png'></image>
-                <text class='f1'>{{item.send_time}}</text>
-              </view>
-
-            </view>
-
-
-
-          </view>
-
-        </view>
-
-      </block>
-
-
-
-    </scroll-view>
-
-  </swiper-item>
-
-</swiper>
+<!-- 分页 -->
+<view class='page-add-data'>
+  <text>{{pageTottomText}}</text>
+</view>

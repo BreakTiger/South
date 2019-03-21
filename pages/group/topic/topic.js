@@ -10,7 +10,9 @@ Page({
    */
   data: {
     groupId: '',
-    topiclist: []
+    topiclist: [],
+    page: 1,
+    count: 15,
   },
 
   /**
@@ -25,17 +27,19 @@ Page({
     })
 
     that.gruopTopice()
-
-
   },
 
   gruopTopice: function() {
     let that = this
+    let num =  that.data.page
+    let page = parseInt(num)
     let session_key = wx.getStorageSync('session_key')
     let id = that.data.groupId
     let data = {
       session_key: session_key,
-      group_id: id
+      group_id: id,
+      page: page,
+      count: 15
     }
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanGroupTopic'
     modal.loading()
@@ -59,47 +63,13 @@ Page({
   // 带参跳转
   toTopic: function(e) {
     let that = this
-
     let tid = e.currentTarget.dataset.id
-
     let gid = that.data.groupId
-
     console.log('tid:', tid);
     console.log('gid：', gid);
-
     wx.navigateTo({
-      url: '/pages/group/topic-detail/topic-detail?tid=' + tid +"&gid="+gid,
-    }) 
-
-
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
+      url: '/pages/group/topic-detail/topic-detail?tid=' + tid + "&gid=" + gid,
+    })
 
   },
 
@@ -114,6 +84,57 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    // let that = this
+    // this.setData({
+    //   pageTottomText: ''
+    // });
+    // let page = that.data.page
+    // that.setData({
+    //   pageTottomText: app.globalData.addText
+    // })
+    // let session_key = wx.getStorageSync('session_key')
+    // let id = that.data.groupId
+    // let data = {
+    //   session_key: session_key,
+    //   group_id: id,
+    //   page: page,
+    //   count: 15
+    // }
+    // let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanGroupTopic'
+    // request.sendRequest(url, 'post', data, {
+    //   "Content-Type": "application/x-www-form-urlencoded"
+    // }).then(function(res) {
+    //   console.log(res)
+    //   let list = res.data.data.info.list
+    //   if (list.length!=0){
+    //     page+=1;
+    //     that.setData({
+    //       page: page
+    //     })
+    //     setTimeout(function () {
+    //       let item = that.data.record.concat(result)
+    //       that.setData({
+    //         record: item
+    //       });
+    //       console.log('pageN', pageN, '地区分页', item)
+    //     }, 1000);
+    //   }else{
+
+    //   }
+
+    //   // modal.loaded()
+    //   // console.log(res)
+    //   // let status = res.data.status
+    //   // console.log(status)
+    //   // if (status == 200) {
+    //   //   let list = res.data.data.info.list
+    //   //   that.setData({
+    //   //     topiclist: list
+    //   //   })
+    //   // }
+    // })
+
+
 
   },
 

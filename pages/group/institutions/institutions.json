@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "机构群"
+  "navigationBarTitleText": "机构群",
+  "enablePullDownRefresh": true
 }
