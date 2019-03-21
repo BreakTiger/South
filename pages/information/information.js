@@ -11,10 +11,11 @@ Page({
     currentTab: 0,
     classlist: [],
     noticelist: [],
-    page: 1,
-    pageN:2,
+    page1: 1,
+    page2: 1,
     count: 15,
-    pageTottomText: ''
+    pageTottomText1: '',
+    pageTottomText2: ''
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
   classinfo: function() {
     let that = this
     let session_key = wx.getStorageSync('session_key')
-    let page = that.data.page
+    let page = that.data.page1
     let count = that.data.count
     let data = {
       session_key: session_key,
@@ -62,7 +63,7 @@ Page({
   // 通知公告
   noticeinfo: function() {
     let that = this
-    let page = that.data.page
+    let page = that.data.page2
     let count = that.data.count
     let token = wx.getStorageSync('token')
     let data = {
@@ -165,26 +166,102 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
+  toPage: function() {
     let that = this
     let tab = that.data.currentTab
     // 判断
     if (tab == 0) {
-      console.log(that.data.page)
+      let list = that.data.classlist
+      console.log('已经获取：', list)
+
       that.setData({
-        pageTottomText: app.globalData.addText
+        pageTottomText1: app.globalData.addText
       })
 
+      let session_key = wx.getStorageSync('session_key')
+      let page = that.data.page1
+      page += 1;
+      let count = that.data.count
+      let data = {
+        session_key: session_key,
+        page: page,
+        count: count
+      }
+      console.log(data)
+      let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanInfolist'
+      modals.loading()
+      request.sendRequest(url, 'post', data, {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }).then(function(res) {
+        console.log(res)
+        let status = res.data.status
+        if (status == 200) {
+          let result = res.data.data
+          console.log(result)
+          if (result.length != 0) {
+            that.setData({
+              page1: page
+            })
+            setTimeout(function() {
+              let add = list.concat(result);
+              that.setData({
+                classlist: add
+              })
+            }, 1000)
+            modals.loaded()
+          } else {
+            that.setData({
+              pageTottomText1: app.globalData.endText,
+            })
+            modals.loaded()
+          }
+        }
+      })
     } else if (tab == 1) {
-      console.log(that.data.page)
       that.setData({
-        pageTottomText: app.globalData.addText
+        pageTottomText2: app.globalData.addText
+      })
+      let list = that.data.noticelist
+      console.log('已经获取的数据：', list)
+      let page = that.data.page2
+      page += 1
+      let count = that.data.count
+      let token = wx.getStorageSync('token')
+      let data = {
+        page: page,
+        count: count
+      }
+      console.log(data)
+      let url = app.globalData.api + '/index.php/app/information/messageAll'
+      modals.loading()
+      request.sendRequest(url, 'post', data, {
+        "token": token
+      }).then(function(res) {
+        console.log(res)
+        let status = res.data.status
+        if (status == 200) {
+          let result = res.data.data
+          console.log(result)
+          if (result.length != 0) {
+            that.setData({
+              page2: page
+            })
+            setTimeout(function() {
+              let add = list.concat(result);
+              that.setData({
+                noticelist: add
+              })
+            }, 1000)
+            modals.loaded()
+          } else {
+            that.setData({
+              pageTottomText2: app.globalData.endText,
+            })
+            modals.loaded()
+          }
+        }
       })
     }
-
   },
 
   /**

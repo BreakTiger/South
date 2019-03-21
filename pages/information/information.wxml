@@ -19,7 +19,7 @@
 
     <swiper-item>
 
-      <scroll-view scroll-y style='height:100%;'>
+      <scroll-view scroll-y style='height:100%;' bindscrolltolower="toPage">
 
         <block wx:for="{{classlist}}" wx:key="list-id" wx:for-index="idx">
 
@@ -53,7 +53,12 @@
 
           </view>
 
-        </block> 
+        </block>
+
+        <!-- 分页 -->
+        <view class='page-add-data'>
+          <text>{{pageTottomText1}}</text>
+        </view>
 
       </scroll-view>
 
@@ -61,7 +66,7 @@
 
     <swiper-item>
 
-      <scroll-view scroll-y style='height:100%;'>
+      <scroll-view scroll-y style='height:100%;' bindscrolltolower="toPage">
 
         <block wx:for="{{noticelist}}" wx:key="list-id">
 
@@ -97,14 +102,14 @@
 
         </block>
 
+        <!-- 分页 -->
+        <view class='page-add-data'>
+          <text>{{pageTottomText2}}</text>
+        </view>
+
       </scroll-view>
 
     </swiper-item>
 
   </swiper>
-</view>
-
-<!-- 分页 -->
-<view class='page-add-data'>
-  <text>{{pageTottomText}}</text>
 </view>
