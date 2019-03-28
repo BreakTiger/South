@@ -47,9 +47,3 @@
   color: #444;
   line-height: 53rpx;
 }
-
-.emp{
-  font-size: 48rpx;
-  font-weight: bold;
-  margin-top: 415rpx;
-}

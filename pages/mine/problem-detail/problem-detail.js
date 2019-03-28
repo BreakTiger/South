@@ -124,6 +124,9 @@ Page({
     // 判断是否有图片
     if (image.length > 0) { //存在  
       let url = app.globalData.api + '/index.php/App/Tool/uploadPic'
+      let leng = image.length;
+      console.log('总循环次数:', leng)
+      let count = 0;
       for (var i = 0; i < image.length; i++) {
         let item = image[i]
         wx.uploadFile({
@@ -143,7 +146,11 @@ Page({
               a.push(imgData)
               let b = a.join(',')
               // console.log(b);
-              that.upPic(b)
+              count++;
+              console.log(count); //循环次数
+              if (count == leng) {
+                that.upPic(b);
+              }
             }
           }
         })
@@ -209,7 +216,7 @@ Page({
       }).then(function(res) {
         console.log(res)
         let status = res.data.status
-        if (status==200){
+        if (status == 200) {
           wx.redirectTo({
             url: '/pages/mine/results/results',
           })

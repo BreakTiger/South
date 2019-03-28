@@ -27,3 +27,9 @@
   font-size: 24rpx;
   color: #999;
 }
+
+.emp{
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-top: 415rpx;
+}

@@ -4,9 +4,7 @@ var app = getApp()
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+  
   data: {
     lunbo: [],
     navlist: [{
@@ -60,7 +58,7 @@ Page({
     let token = wx.getStorageSync('token')
     console.log('token:', token);
     let data = {}
-    let url = app.globalData.api + '/index.php/app/banner/banner'
+    let url = app.globalData.api + '/index.php/app/banner/banner';
     modals.loading()
     request.sendRequest(url, 'post', data, {
       "token": token

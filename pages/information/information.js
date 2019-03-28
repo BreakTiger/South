@@ -48,7 +48,7 @@ Page({
     request.sendRequest(url, 'post', data, {
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
-      console.log(res);
+      console.log('易班资讯：',res);
       let status = res.data.status
       if (status == 200) {
         let list = res.data.data
@@ -105,7 +105,6 @@ Page({
         currentTab: s_current
       })
     }
-
   },
 
   // 滑动切换

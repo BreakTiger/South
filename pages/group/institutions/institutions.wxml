@@ -1,20 +1,24 @@
 <!-- 加入的公共群 -->
 
-<view class='pages'>
-  <view class='classlist' wx:for="{{grouplist}}" wx:key='list-id'>
-    <view class='list-item' bindtap='toTopic' data-id='{{item.group_id}}'>
-      <!-- 群组头像 -->
-      <view class='header'>
-        <image src='{{item.group_icon}}'></image>
-      </view>
-      <!-- 群组描述 -->
-      <view class='info'>
-        <text class='classname'>{{item.group_name}}</text>
-        <text class='classinfo'>群主：{{item.adm_nick}}</text>
-        <text class='classinfo'>成员：{{item.group_mamber}}人</text>
+
+<view class='container'>
+
+  <view class='pages'>
+    <view class='classlist' wx:for="{{grouplist}}" wx:key='list-id'>
+      <view class='list-item' bindtap='toTopic' data-id='{{item.group_id}}'>
+        <!-- 群组头像 -->
+        <view class='header'>
+          <image src='{{item.group_icon}}'></image>
+        </view>
+        <!-- 群组描述 -->
+        <view class='info'>
+          <text class='classname'>{{item.group_name}}</text>
+          <text class='classinfo'>群主：{{item.adm_nick}}</text>
+          <text class='classinfo'>成员：{{item.group_mamber}}人</text>
+        </view>
       </view>
     </view>
+
   </view>
-
+  <view wx:if="{{grouplist.length==0}}" class='emp'>你还未加入任何群组</view>
 </view>
-
