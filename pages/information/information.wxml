@@ -1,4 +1,5 @@
 <view class='container'>
+
   <!-- 顶部导航栏 -->
   <view class='top-line row'>
 
@@ -7,13 +8,13 @@
       <view class="{{currentTab==0 ? 'cpioint' : ''}}"></view>
     </view>
 
-
     <view class='type coun' bindtap='selectType' data-current="1">
       <view class="type-name {{currentTab==1 ? 'active' : ''}}">通知公告</view>
       <view class="{{currentTab==1 ? 'cpioint' : ''}}"></view>
     </view>
 
   </view>
+
   <!-- 内容盒子 -->
   <swiper class='content' current='{{currentTab}}' duration="500" bindchange='sChange'>
 
@@ -35,10 +36,10 @@
 
                 <view class='read-time'>
 
-                  <view class='read row'>
+                  <!-- <view class='read row'>
                     <image src='/image/icon/eye.png'></image>
                     <text class='f1'>{{item.number}}</text>
-                  </view>
+                  </view> -->
 
                   <view class='time row'>
                     <image src='/image/icon/time.png'></image>
@@ -112,4 +113,5 @@
     </swiper-item>
 
   </swiper>
+
 </view>

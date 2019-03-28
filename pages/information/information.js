@@ -57,6 +57,8 @@ Page({
         })
         modals.loaded()
       }
+    },function(err){
+      console.log(err);
     })
   },
 

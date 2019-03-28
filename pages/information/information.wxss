@@ -83,13 +83,13 @@
 }
 
 .read image {
-  width: 25rpx;
-  height: 25rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .time image {
-  width: 22rpx;
-  height: 21rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .f1 {

@@ -1,7 +1,7 @@
 <view class='container'>
 
   <view class='top-title'>
-    <text>意见与建议</text>
+    <text>{{feedbackname}}</text>
   </view>
 
   <view class='area'>

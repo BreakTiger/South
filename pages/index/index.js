@@ -10,7 +10,7 @@ Page({
     navlist: [{
         icon: '/image/nav/icon1.png',
         nav: '综合测评',
-        src: 'https://student-wechat.sustc.edu.cn/?ticket=ST-935222-3TonAzSqZwyHkq0Cwp2T-cas.sustc.edu.cn#/app/evaluation'
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=evaluation'
       },
       // {
       //   icon: '/image/nav/icon2.png',
@@ -20,11 +20,11 @@ Page({
       {
         icon: '/image/nav/icon3.png',
         nav: '课表查询',
-        src: 'https://student-wechat.sustc.edu.cn/?ticket=ST-935222-3TonAzSqZwyHkq0Cwp2T-cas.sustc.edu.cn#/app/SignUpClassList'
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=SignUpClassList'
       }, {
         icon: '/image/nav/icon4.png',
         nav: '就业管理',
-        src: 'https://student-wechat.sustc.edu.cn/?ticket=ST-935222-3TonAzSqZwyHkq0Cwp2T-cas.sustc.edu.cn#/app/graduate-employ'
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=graduate-employ'
       }, {
         icon: '/image/nav/icon5.png',
         nav: '物业报修',
@@ -32,11 +32,11 @@ Page({
       }, {
         icon: '/image/nav/icon6.png',
         nav: '请假管理',
-        src: 'http://ehall.sustc.edu.cn/xhxsfw/sys/qjgl/*default/index.html#/'
+        src: 'http://ehall.sustech.edu.cn/xhxsfw/sys/qjgl/*default/index.html'
       }, {
         icon: '/image/nav/icon7.png',
         nav: '选课',
-        src: 'https://student-wechat.sustc.edu.cn/?ticket=ST-935222-3TonAzSqZwyHkq0Cwp2T-cas.sustc.edu.cn#/app/course-selection'
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=course-selection'
       }
     ],
     notice: [],
@@ -96,10 +96,8 @@ Page({
       if (status == 200) {
         let notice = res.data.data
         console.log(notice)
-        page += 1
         that.setData({
-          notice: notice,
-          page: page
+          notice: notice
         })
         console.log(that.data.page)
         modals.loaded()
@@ -162,12 +160,11 @@ Page({
   onReachBottom: function() {
     let that = this
     let token = wx.getStorageSync('token')
-    let page = that.data.page
+    let page = that.data.page+1
     let count = that.data.count
     // 获取之前获取的数据
     let list = that.data.notice
     console.log('已经获取的数据：', list);
-
     // 开始提示加载
     that.setData({
       pageTottomText: app.globalData.addText
@@ -177,7 +174,7 @@ Page({
       count: count
     }
     console.log(data)
-    let url = app.globalData.api + '/index.php/app/information/messagePush'
+    let url = app.globalData.api + '/index.php/app/information/messagePush';
     modals.loading()
     request.sendRequest(url, 'post', data, {
       "token": token
@@ -188,7 +185,6 @@ Page({
         let result = res.data.data
         console.log(result)
         if (result.length != 0) {
-          page += 1
           that.setData({
             page: page
           })
@@ -198,13 +194,14 @@ Page({
               notice: add
             })
           }, 1000)
-          console.log('333:', page)
+          console.log('333:', that.data.page)
           modals.loaded()
         } else {
           that.setData({
             pageTottomText: app.globalData.endText,
           })
           modals.loaded()
+          console.log('444:', that.data.page)
         }
       }
     })

@@ -9,6 +9,7 @@ Page({
    */
   data: {
     typeid: '', //故障类型ID
+    feedbackname:'', //故障名称
     current: 0, //初始字数
     max: 200, //最大字数
     inpuVal: '', //输入的内容
@@ -28,8 +29,11 @@ Page({
     console.log(options);
     // 获取类型ID
     let typeid = options.id
+
+    let feedbackname = options.feedbackname
     that.setData({
-      typeid: typeid
+      typeid: typeid,
+      feedbackname: feedbackname
     })
 
   },
@@ -127,6 +131,7 @@ Page({
       let leng = image.length;
       console.log('总循环次数:', leng)
       let count = 0;
+      modals.loading()
       for (var i = 0; i < image.length; i++) {
         let item = image[i]
         wx.uploadFile({
@@ -137,6 +142,7 @@ Page({
             "token": token
           },
           success: function(res) {
+            modals.loaded()
             console.log(res)
             let info = JSON.parse(res.data)
             let status = info.status
@@ -166,10 +172,12 @@ Page({
           type: type
         }
         console.log('data:', data)
+        modals.loading()
         let url = app.globalData.api + '/index.php/App/User/feedback'
         request.sendRequest(url, 'post', data, {
           "token": token
         }).then(function(res) {
+          modals.loaded()
           console.log(res)
           let status = res.data.status
           if (status == 200) {
@@ -210,10 +218,12 @@ Page({
         type: type
       }
       console.log('data:', data);
+      modals.loading()
       let url = app.globalData.api + '/index.php/App/User/feedback'
       request.sendRequest(url, 'post', data, {
         "token": token
       }).then(function(res) {
+        modals.loaded()
         console.log(res)
         let status = res.data.status
         if (status == 200) {

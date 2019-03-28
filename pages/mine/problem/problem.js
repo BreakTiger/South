@@ -42,9 +42,16 @@ Page({
   // 带参跳转
   toUpproblem: function(e) {
     let that = this
-    let id = e.currentTarget.dataset.id
+    let index = e.currentTarget.dataset.index
+    let list = that.data.prolist
+    let item = list[index]
+    console.log(item);
+    let id = item.id
+    let feedbackname = item.feedbackname
     let url = '/pages/mine/problem-detail/problem-detail?id='
-    modal.navigate(url,id)
+    wx.navigateTo({
+      url: '/pages/mine/problem-detail/problem-detail?id=' + id + '&feedbackname=' + feedbackname,
+    })
   },
 
 

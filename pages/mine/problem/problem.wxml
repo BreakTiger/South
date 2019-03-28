@@ -4,7 +4,7 @@
 <view class='list'>
 
   <block wx:for="{{prolist}}" wx:key="list-id">
-    <view class='lits-item' data-id='{{item.id}}' bindtap='toUpproblem'>
+    <view class='lits-item' data-index='{{index}}' bindtap='toUpproblem'>
       <text>{{item.feedbackname}}</text>
       <image src='/image/icon/arrow.png' class='right'></image>
     </view>
