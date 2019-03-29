@@ -36,11 +36,6 @@
 
                 <view class='read-time'>
 
-                  <!-- <view class='read row'>
-                    <image src='/image/icon/eye.png'></image>
-                    <text class='f1'>{{item.number}}</text>
-                  </view> -->
-
                   <view class='time row'>
                     <image src='/image/icon/time.png'></image>
                     <text class='f1'>{{item.create_time}}</text>
@@ -60,6 +55,8 @@
         <view class='page-add-data'>
           <text>{{pageTottomText1}}</text>
         </view>
+
+        <view wx:if="{{classlist.length==0}}" class='emp' style='margin-left:252rpx;'>当前无资讯</view>
 
       </scroll-view>
 
@@ -107,6 +104,8 @@
         <view class='page-add-data'>
           <text>{{pageTottomText2}}</text>
         </view>
+
+        <view wx:if="{{noticelist.length==0}}" class='emp' style='margin-left:252rpx;'>当前无公告</view>
 
       </scroll-view>
 

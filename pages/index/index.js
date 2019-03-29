@@ -24,7 +24,7 @@ Page({
       }, {
         icon: '/image/nav/icon4.png',
         nav: '就业管理',
-        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=graduate-employ'
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=gradu1ate-employ'
       }, {
         icon: '/image/nav/icon5.png',
         nav: '物业报修',
@@ -63,13 +63,13 @@ Page({
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
+      modals.loaded()
       console.log(res)
       let status = res.data.status
       if (status == 200) {
         that.setData({
           lunbo: res.data.data
         })
-        modals.loaded()
         that.announcements()
       }
     })
@@ -92,6 +92,7 @@ Page({
       "token": token
     }).then(function(res) {
       // console.log(res)
+      modals.loaded()
       let status = res.data.status
       if (status == 200) {
         let notice = res.data.data
@@ -100,7 +101,7 @@ Page({
           notice: notice
         })
         console.log(that.data.page)
-        modals.loaded()
+        
       }
     })
   },
@@ -188,6 +189,7 @@ Page({
           that.setData({
             page: page
           })
+          console.log(that.data.page);
           setTimeout(function() {
             let add = list.concat(result);
             that.setData({

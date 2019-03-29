@@ -48,6 +48,7 @@ Page({
     request.sendRequest(url, 'post', data, {
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
+      modals.loaded()
       console.log('易班资讯：',res);
       let status = res.data.status
       if (status == 200) {
@@ -55,7 +56,6 @@ Page({
         that.setData({
           classlist: list
         })
-        modals.loaded()
       }
     },function(err){
       console.log(err);
@@ -78,6 +78,7 @@ Page({
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
+      modals.loaded()
       console.log(res);
       let status = res.data.status
       if (status == 200) {
@@ -85,7 +86,6 @@ Page({
         that.setData({
           noticelist: list
         })
-        modals.loaded()
       }
     })
   },
