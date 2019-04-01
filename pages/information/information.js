@@ -49,15 +49,42 @@ Page({
       "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
       modals.loaded()
-      console.log('易班资讯：',res);
+      console.log('易班资讯：', res);
       let status = res.data.status
       if (status == 200) {
         let list = res.data.data
         that.setData({
           classlist: list
         })
+      } else if (status == 201) {
+        setTimeout(function() {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试',
+            icon: 'none'
+          })
+        }, 1000)
+      } else if (status == 202) {
+        setTimeout(function() {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
+      } else if (status == 203) {
+        setTimeout(function() {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
       }
-    },function(err){
+    }, function(err) {
       console.log(err);
     })
   },
@@ -216,6 +243,13 @@ Page({
             })
             modals.loaded()
           }
+        } else if (status == 201) {
+          setTimeout(function() {
+            wx.showToast({
+              title: '刷新失败，请稍后重试',
+              icon: 'none'
+            })
+          }, 1000)
         }
       })
     } else if (tab == 1) {
@@ -260,6 +294,13 @@ Page({
             })
             modals.loaded()
           }
+        } else if (status == 201) {
+          setTimeout(function () {
+            wx.showToast({
+              title: '刷新失败，请稍后重试',
+              icon: 'none'
+            })
+          }, 1000)
         }
       })
     }
@@ -271,5 +312,5 @@ Page({
   onShareAppMessage: function() {
 
   }
-  
+
 })

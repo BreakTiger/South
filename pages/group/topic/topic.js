@@ -55,6 +55,13 @@ Page({
         that.setData({
           topiclist: list
         })
+      } else if (status == 201) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试',
+            icon: 'none'
+          })
+        }, 1000)
       }
     })
 
@@ -84,58 +91,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    // let that = this
-    // this.setData({
-    //   pageTottomText: ''
-    // });
-    // let page = that.data.page
-    // that.setData({
-    //   pageTottomText: app.globalData.addText
-    // })
-    // let session_key = wx.getStorageSync('session_key')
-    // let id = that.data.groupId
-    // let data = {
-    //   session_key: session_key,
-    //   group_id: id,
-    //   page: page,
-    //   count: 15
-    // }
-    // let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanGroupTopic'
-    // request.sendRequest(url, 'post', data, {
-    //   "Content-Type": "application/x-www-form-urlencoded"
-    // }).then(function(res) {
-    //   console.log(res)
-    //   let list = res.data.data.info.list
-    //   if (list.length!=0){
-    //     page+=1;
-    //     that.setData({
-    //       page: page
-    //     })
-    //     setTimeout(function () {
-    //       let item = that.data.record.concat(result)
-    //       that.setData({
-    //         record: item
-    //       });
-    //       console.log('pageN', pageN, '地区分页', item)
-    //     }, 1000);
-    //   }else{
-
-    //   }
-
-    //   // modal.loaded()
-    //   // console.log(res)
-    //   // let status = res.data.status
-    //   // console.log(status)
-    //   // if (status == 200) {
-    //   //   let list = res.data.data.info.list
-    //   //   that.setData({
-    //   //     topiclist: list
-    //   //   })
-    //   // }
-    // })
-
-
-
+   
   },
 
   /**

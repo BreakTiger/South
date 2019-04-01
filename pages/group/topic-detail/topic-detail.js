@@ -60,6 +60,33 @@ Page({
         let article = res.data.data.info.topic_content
         WxParse.wxParse('article', 'html', article, that, 5); //富文本解析
         that.comments();
+      } else if (status == 201) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试',
+            icon: 'none'
+          })
+        }, 1000)
+      } else if (status == 202) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
+      } else if (status == 203) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
       }
 
     })
@@ -105,6 +132,33 @@ Page({
             commentslist: atr
           })
         }
+      } else if (status == 201) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '网络请求失败，请稍后重试',
+            icon: 'none'
+          })
+        }, 1000)
+      } else if (status == 202) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
+      } else if (status == 203) {
+        setTimeout(function () {
+          wx.showToast({
+            title: '登陆失效，请重新登陆',
+            icon: 'none'
+          })
+        }, 1000)
+        wx.reLaunch({
+          url: '/pages/login/login',
+        })
       }
     })
   },

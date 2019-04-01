@@ -101,8 +101,7 @@ Page({
           notice: notice
         })
         console.log(that.data.page)
-        
-      }
+      } 
     })
   },
 

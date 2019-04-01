@@ -5,26 +5,26 @@
   <block wx:for="{{topiclist}}" wx:key="list-id">
     <view class='list-item' data-id='{{item.topic_id}}' bindtap='toTopic'>
 
-      <!-- 话题图片 -->
+     
       <view class='p1'>
         <image src='{{item.pub_head}}'></image>
       </view>
 
-      <!-- 话题信息 -->
+     
       <view class='topicinfo'>
 
-        <!-- 话题标题 -->
+        
         <view class='title'>{{item.topic_title}}</view>
 
         <view class='line'>
 
-          <!-- 阅读人数 -->
+          
           <view class='read'>
             <image src='/image/icon/eye.png' class='icon1'></image>
             <text class='f1'>{{item.reply_count}}</text>
           </view>
 
-          <!-- 发布日期 -->
+          
           <view class='date'>
             <image src='/image/icon/time.png' class='icon2'></image>
             <text class='f1'>{{item.create_time}}</text>
@@ -35,6 +35,8 @@
       </view>
     </view>
   </block>
+
+  <view wx:if="{{topiclist.length==0}}" class='emp'>当前群还未有话题哦^_^</view>
   
 </view>
 
