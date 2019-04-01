@@ -4,7 +4,7 @@ var app = getApp()
 
 Page({
 
-  
+
   data: {
     lunbo: [],
     navlist: [{
@@ -28,7 +28,7 @@ Page({
       }, {
         icon: '/image/nav/icon5.png',
         nav: '物业报修',
-        src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413&sign=icZunIMRGV7v+4OT/dW7H7ExceFAVHOOPli/SxpV+vrtgNMc2IOKKc+Jntfzc0zzuS1jeHQsk2p7lUT38FzcPo6TkjYbN865fXqg4Hy4J/pEL9+PDdWz4twflXc/RO7HwzU8zzhEI6327GvGN7uZiq0yq21nFRQYVk+Xj3G6KWc=#/'
+        src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413'
       }, {
         icon: '/image/nav/icon6.png',
         nav: '请假管理',
@@ -101,7 +101,7 @@ Page({
           notice: notice
         })
         console.log(that.data.page)
-      } 
+      }
     })
   },
 
@@ -115,8 +115,12 @@ Page({
   selectKinds: function(e) {
     let src = e.currentTarget.dataset.src
     console.log(src)
-    let url = '/pages/index/outNet/outNet?src='
-    modals.navigate(url, src);
+    let url = encodeURIComponent(JSON.stringify(src));
+    console.log(url) 
+    wx.navigateTo({
+      url: '/pages/index/outNet/outNet?url=' + url,
+    })
+    
   },
 
   // 进入通知详情
@@ -160,7 +164,7 @@ Page({
   onReachBottom: function() {
     let that = this
     let token = wx.getStorageSync('token')
-    let page = that.data.page+1
+    let page = that.data.page + 1
     let count = that.data.count
     // 获取之前获取的数据
     let list = that.data.notice

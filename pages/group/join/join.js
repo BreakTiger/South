@@ -18,16 +18,18 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-    let token = wx.getStorageSync('token')
+    let session_key = wx.getStorageSync('session_key');
     let page = that.data.page
     let data = {
       page: page,
-      count:15
+      count:15,
+      session_key:session_key
     }
+    console.log(data);
     let url = app.globalData.api + '/index.php/app/nkdyiban/getYibanAddGroup'
     modals.loading()
     request.sendRequest(url, 'post', data, {
-      'token': token
+      "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
       modals.loaded()
       console.log(res);
