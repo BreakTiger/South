@@ -25,3 +25,8 @@
   </view>
 
 </view>
+
+<!-- 分页 -->
+<view class='page-add-data'>
+  <text>{{pageTottomText}}</text>
+</view>

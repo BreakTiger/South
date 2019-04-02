@@ -36,9 +36,7 @@ Page({
         that.setData({
           information:res.data.data
         })
-
         let article = res.data.data.message
-
         WxParse.wxParse('article', 'html', article, that, 5);
         
       }

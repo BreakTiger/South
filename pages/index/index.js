@@ -53,15 +53,14 @@ Page({
     that.lunbo()
   },
 
+//首页轮播
   lunbo: function() {
     let that = this
-    let token = wx.getStorageSync('token')
-    console.log('token:', token);
     let data = {}
     let url = app.globalData.api + '/index.php/app/banner/banner';
     modals.loading()
     request.sendRequest(url, 'post', data, {
-      "token": token
+      "Content-Type": "application/x-www-form-urlencoded"
     }).then(function(res) {
       modals.loaded()
       console.log(res)
@@ -91,7 +90,6 @@ Page({
     request.sendRequest(url, 'post', data, {
       "token": token
     }).then(function(res) {
-      // console.log(res)
       modals.loaded()
       let status = res.data.status
       if (status == 200) {
@@ -120,7 +118,6 @@ Page({
     wx.navigateTo({
       url: '/pages/index/outNet/outNet?url=' + url,
     })
-    
   },
 
   // 进入通知详情
