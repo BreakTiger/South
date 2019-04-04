@@ -6,8 +6,8 @@
 }
 
 .logo {
-  width: 129rpx;
-  height: 131rpx;
+  width:201rpx;
+  height: 91rpx;
   margin-bottom: 40rpx;
 }
 

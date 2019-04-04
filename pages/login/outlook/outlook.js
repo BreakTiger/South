@@ -1,4 +1,4 @@
-// pages/login/outlook/outlook.js
+
 Page({
 
   /**
@@ -15,9 +15,12 @@ Page({
     let that = this
 
     let session_key = wx.getStorageSync('session_key')
+
     console.log('session_key:', session_key);
+    
     let url = 'https://nankeda.heifeng.xin/index.php/app/nkdyiban/yibanlogin?session_key=' + session_key;
-    console.log('url:', url);
+    console.log('url111111111:', url);
+    
     that.setData({
       url: url,
     })

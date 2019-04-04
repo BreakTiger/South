@@ -1,4 +1,7 @@
 import modal from '../../class/methods/modal.js'
+const request = require('../../class/api/htts.js')
+var app = getApp()
+
 
 Page({
 
@@ -30,6 +33,27 @@ Page({
   toproblem: function() {
     let url = '/pages/mine/problem/problem';
     modal.navigate(url);
+  },
+
+  tologinOut: function() {
+    let that = this
+    let session_key = wx.getStorageSync('session_key')
+    let data = {
+      session_key: session_key
+    }
+    let url = app.globalData.api + '/index.php/app/nkdyiban/yibanlogout';
+    request.sendRequest(url, 'get', data, {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }).then(function(res) {
+      console.log(res);
+      let status = res.data.status
+      if(status==200){
+        wx.navigateTo({
+          url: '/pages/login/outlook/outlook',
+        })
+      }
+    })
+
   },
 
   /**

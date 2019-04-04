@@ -28,7 +28,7 @@ Page({
       }, {
         icon: '/image/nav/icon5.png',
         nav: '物业报修',
-        src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413'
+        src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413&sign=icZunIMRGV7v+4OT/dW7H7ExceFAVHOOPli/SxpV+vrtgNMc2IOKKc+Jntfzc0zzuS1jeHQsk2p7lUT38FzcPo6TkjYbN865fXqg4Hy4J/pEL9+PDdWz4twflXc/RO7HwzU8zzhEI6327GvGN7uZiq0yq21nFRQYVk+Xj3G6KWc=#/'
       }, {
         icon: '/image/nav/icon6.png',
         nav: '请假管理',
@@ -106,7 +106,7 @@ Page({
   toImage: function(e) {
     let src = e.currentTarget.dataset.src
     console.log(src)
-    let url = '/pages/index/outNet/outNet?src='
+    let url = '/pages/index/bannerlink/bannerlink?src='
     modals.navigate(url, src);
   },
 

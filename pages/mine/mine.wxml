@@ -8,8 +8,16 @@
   </view>
 </view>
 
-<view class='returnline'bindtap='toproblem'>
-  <view class='return' >
+<!-- <view class='returnline' bindtap='tologinOut'>
+  <view class='return'>
+    <image src='/image/icon/feedback.png' class='p1'></image>
+    <text>切换易班账户</text>
+  </view>
+  <image src='/image/icon/arrow.png' class='p2'></image>
+</view> -->
+
+<view class='returnline' bindtap='toproblem'>
+  <view class='return'>
     <image src='/image/icon/feedback.png' class='p1'></image>
     <text>反馈</text>
   </view>

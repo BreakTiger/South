@@ -2,12 +2,12 @@
 
   <view class='logo-name'>
     <image src='/image/icon/unLogo.png' class='logo'></image>
-    <view>南科大，欢迎你!</view>
+    <view>易班南科，欢迎你!</view>
   </view>
 
   <view class='colorline'></view>
 
-  <view class='topic'>南科大易班小程序正在申请使用您的微信个人信息，小程序登录将使用：</view>
+  <view class='topic'>易班南科小程序正在申请使用您的微信个人信息，小程序登录将使用：</view>
 
   <view class='topic2'> · 你的公开信息（昵称、头像、地区及性别）</view>
 

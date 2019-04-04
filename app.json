@@ -17,7 +17,8 @@
     "pages/information/notice/notice",
     "pages/login/person/person",
     "pages/login/outlook/outlook",
-    "pages/index/outNet/outNet"
+    "pages/index/outNet/outNet",
+    "pages/index/bannerlink/bannerlink"
   ],
   "window": {
     "backgroundTextStyle": "light",

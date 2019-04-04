@@ -88,7 +88,10 @@ Page({
         })
        
       } else if (status == 201) {
-        modals.showToast('系统繁忙，请稍后重试',none);
+        wx.showToast({
+          title: '系统繁忙，请稍后重试',
+          icon:'none'
+        })
       }
     })
   },
