@@ -11,13 +11,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let data = decodeURIComponent(options.url)
-    console.log(data);
-    let url = JSON.parse(data);
-    console.log(url);
+
     this.setData({
-      url:url
+      url:'https://nankeda.heifeng.xin/index.php/app/api/iframe'
     })
+    // let data = decodeURIComponent(options.url)
+    // console.log(data);
+    // let url = JSON.parse(data);
+    // console.log(url);
+    // this.setData({
+    //   url:url
+    // })
    
     
   },

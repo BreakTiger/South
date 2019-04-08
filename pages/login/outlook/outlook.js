@@ -29,9 +29,7 @@ Page({
 
   togetData: function(e) {
     let that = this
-    console.log('从网页中获取的信息：');
-    console.log(e);
-
+    console.log('从网页中获取的信息：',e);
     wx.reLaunch({
       url: '/pages/index/index',
     })
@@ -43,9 +41,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    // wx.navigateBack({
-    //   url: '/pages/login/login'
-    // })
   },
 
   /**
@@ -59,7 +54,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    togetData
 
   },
 
@@ -67,9 +61,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    let that = this
-
-    that.togetData()
+    
   },
 
   /**

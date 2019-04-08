@@ -53,7 +53,7 @@ Page({
     that.lunbo()
   },
 
-//首页轮播
+  //首页轮播
   lunbo: function() {
     let that = this
     let data = {}
@@ -110,13 +110,18 @@ Page({
     modals.navigate(url, src);
   },
 
+  // 外部跳转
   selectKinds: function(e) {
-    let src = e.currentTarget.dataset.src
-    console.log(src)
-    let url = encodeURIComponent(JSON.stringify(src));
-    console.log(url) 
+    // let src = e.currentTarget.dataset.src
+    // console.log(src)
+    // let url = encodeURIComponent(JSON.stringify(src));
+    // console.log(url)
+    // wx.navigateTo({
+    //   url: '/pages/index/outNet/outNet?url=' + url,
+    // })
+
     wx.navigateTo({
-      url: '/pages/index/outNet/outNet?url=' + url,
+      url: '/pages/index/outNet/outNet',
     })
   },
 
