@@ -56,6 +56,7 @@ Page({
     console.log(e);
 
     let encryptedData = e.detail.encryptedData
+    
     let iv = e.detail.iv
     console.log('encryptedData:', encryptedData);
     console.log('iv:', iv);

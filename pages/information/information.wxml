@@ -20,7 +20,7 @@
 
     <swiper-item>
 
-      <scroll-view scroll-y style='height:100%;' bindscrolltolower="toPage">
+      <scroll-view scroll-y style='height:100%;' bindscrolltoupper="toTop" bindscrolltolower="toEnd">
 
         <block wx:for="{{classlist}}" wx:key="list-id" wx:for-index="idx">
 
@@ -64,7 +64,7 @@
 
     <swiper-item>
 
-      <scroll-view scroll-y style='height:100%;' bindscrolltolower="toPage">
+      <scroll-view scroll-y style='height:100%;' bindscrolltoupper="toTop" bindscrolltolower="toEnd">
 
         <block wx:for="{{noticelist}}" wx:key="list-id">
 

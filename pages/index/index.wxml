@@ -17,11 +17,6 @@
 
   </swiper>
 
-
-
-
-
-
   <!-- 导航容器 -->
   <view class='navbox'>
     <block wx:for="{{navlist}}" wx:key="list-id">

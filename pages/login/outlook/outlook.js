@@ -30,9 +30,11 @@ Page({
   togetData: function(e) {
     let that = this
     console.log('从网页中获取的信息：',e);
+
     wx.reLaunch({
       url: '/pages/index/index',
     })
+    
   },
 
 

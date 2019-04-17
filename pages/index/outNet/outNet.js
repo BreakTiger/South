@@ -11,19 +11,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-    this.setData({
-      url:'https://nankeda.heifeng.xin/index.php/app/api/iframe'
+    let that = this
+    let src = decodeURIComponent(options.src)
+    let data = JSON.parse(src);
+    console.log(data);
+    that.setData({
+      url: data
     })
-    // let data = decodeURIComponent(options.url)
-    // console.log(data);
-    // let url = JSON.parse(data);
-    // console.log(url);
-    // this.setData({
-    //   url:url
-    // })
-   
-    
+
+  },
+
+  togetData:function(e){
+    let that = this
+
+    console.log('网页返回的数据：',e)
   },
 
   /**
@@ -51,7 +52,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    
   },
 
   /**

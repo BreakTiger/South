@@ -22,6 +22,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+
+  onShow:function(){
     let that = this
     let tab = that.data.currentTab
     if (tab == 0) {
@@ -63,6 +67,7 @@ Page({
             icon: 'none'
           })
         }, 1000)
+        that.classinfo();
       } else if (status == 202) {
         setTimeout(function() {
           wx.showToast({
@@ -168,7 +173,7 @@ Page({
     modals.navigate(url, mid);
   },
 
-  onPullDownRefresh: function() {
+  toTop:function(){
     let tab = this.data.currentTab
     if (tab == 0) {
       wx.showToast({
@@ -191,10 +196,9 @@ Page({
       }, 1000);
       this.noticeinfo()
     }
-
   },
 
-  toPage: function() {
+  toEnd: function() {
     let that = this
     let tab = that.data.currentTab
     // 判断
@@ -306,9 +310,7 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
+ 
   onShareAppMessage: function() {
 
   }

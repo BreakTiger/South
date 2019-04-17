@@ -24,18 +24,23 @@ Page({
       }, {
         icon: '/image/nav/icon4.png',
         nav: '就业管理',
-        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=gradu1ate-employ'
-      }, {
-        icon: '/image/nav/icon5.png',
-        nav: '物业报修',
-        src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413&sign=icZunIMRGV7v+4OT/dW7H7ExceFAVHOOPli/SxpV+vrtgNMc2IOKKc+Jntfzc0zzuS1jeHQsk2p7lUT38FzcPo6TkjYbN865fXqg4Hy4J/pEL9+PDdWz4twflXc/RO7HwzU8zzhEI6327GvGN7uZiq0yq21nFRQYVk+Xj3G6KWc=#/'
-      }, {
-        icon: '/image/nav/icon6.png',
-        nav: '请假管理',
-        src: 'http://ehall.sustech.edu.cn/xhxsfw/sys/qjgl/*default/index.html'
-      }, {
+        src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=graduate-employ'
+      },
+      // {
+      //   icon: '/image/nav/icon5.png',
+      //   nav: '物业报修',
+      //   src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413&sign=icZunIMRGV7v+4OT/dW7H7ExceFAVHOOPli/SxpV+vrtgNMc2IOKKc+Jntfzc0zzuS1jeHQsk2p7lUT38FzcPo6TkjYbN865fXqg4Hy4J/pEL9+PDdWz4twflXc/RO7HwzU8zzhEI6327GvGN7uZiq0yq21nFRQYVk+Xj3G6KWc=#/'
+      // }, 
+      
+      // {
+      //   icon: '/image/nav/icon6.png',
+      //   nav: '请假管理',
+      //   src: 'http://ehall.sustech.edu.cn/xhxsfw/sys/qjgl/*default/index.html'
+      // }, 
+      
+      {
         icon: '/image/nav/icon7.png',
-        nav: '选课',
+        nav: '课表信息',
         src: 'https://cas.sustech.edu.cn/cas/login?service=https://student-wechat.sustech.edu.cn/?param=course-selection'
       }
     ],
@@ -49,8 +54,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this
-    that.lunbo()
+
   },
 
   //首页轮播
@@ -103,25 +107,20 @@ Page({
     })
   },
 
-  toImage: function(e) {
-    let src = e.currentTarget.dataset.src
-    console.log(src)
-    let url = '/pages/index/bannerlink/bannerlink?src='
-    modals.navigate(url, src);
-  },
+  // toImage: function(e) {
+  //   let src = e.currentTarget.dataset.src
+  //   console.log(src)
+  //   let url = '/pages/index/bannerlink/bannerlink?src='
+  //   modals.navigate(url, src);
+  // },
 
   // 外部跳转
   selectKinds: function(e) {
-    // let src = e.currentTarget.dataset.src
-    // console.log(src)
-    // let url = encodeURIComponent(JSON.stringify(src));
-    // console.log(url)
-    // wx.navigateTo({
-    //   url: '/pages/index/outNet/outNet?url=' + url,
-    // })
-
+    let data = e.currentTarget.dataset.src
+    let src = encodeURIComponent(JSON.stringify(data));
+    console.log(src)
     wx.navigateTo({
-      url: '/pages/index/outNet/outNet',
+      url: '/pages/index/outNet/outNet?src=' + src,
     })
   },
 
@@ -143,6 +142,9 @@ Page({
         url: '/pages/login/login',
       })
     }
+
+    let that = this
+    that.lunbo()
   },
 
   /**

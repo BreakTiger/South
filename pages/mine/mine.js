@@ -16,16 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this
-    // 获取用户信息
-    modal.loading();
-    let user = wx.getStorageSync('userinfo');
-    console.log('user:', user);
-    that.setData({
-      user: user
-    })
-    modal.loaded();
-
+    
   },
 
 
@@ -67,7 +58,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let that = this
+    // 获取用户信息
+    modal.loading();
+    let user = wx.getStorageSync('userinfo');
+    console.log('user:', user);
+    that.setData({
+      user: user
+    })
+    modal.loaded();
   },
 
   /**
