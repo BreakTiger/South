@@ -31,13 +31,13 @@ Page({
       //   nav: '物业报修',
       //   src: 'http://x.pai-xiu.com:9099/index.html%20?openId=18102775413&sign=icZunIMRGV7v+4OT/dW7H7ExceFAVHOOPli/SxpV+vrtgNMc2IOKKc+Jntfzc0zzuS1jeHQsk2p7lUT38FzcPo6TkjYbN865fXqg4Hy4J/pEL9+PDdWz4twflXc/RO7HwzU8zzhEI6327GvGN7uZiq0yq21nFRQYVk+Xj3G6KWc=#/'
       // }, 
-      
+
       // {
       //   icon: '/image/nav/icon6.png',
       //   nav: '请假管理',
       //   src: 'http://ehall.sustech.edu.cn/xhxsfw/sys/qjgl/*default/index.html'
       // }, 
-      
+
       {
         icon: '/image/nav/icon7.png',
         nav: '课表信息',
@@ -54,7 +54,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
   },
 
   //首页轮播
